@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+travis = Inventory.new(:name => "travis")
+weapon = Slot.new(:name => "primary weapon")
+travis.slots << weapon
+rifle = Item.new(:name => "AK-47")
+weapon.item = rifle
+rifle_accessories = Inventory.new(:name => "rifle accessories")
+rifle.inventory = rifle_accessories
+top_rail = Slot.new(:name => "top rail")
+rifle_accessories.slots << top_rail
+scope = Item.new(:name => "scope")
+top_rail.item = scope
+bottom_rail = Slot.new(:name => "bottom rail")
+rifle_accessories.slots << bottom_rail
+
+travis.save!

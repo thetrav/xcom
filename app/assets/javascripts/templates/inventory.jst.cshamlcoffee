@@ -1,0 +1,5 @@
+.inventory
+  = @inventory.get("name")
+  .slots
+    - for slot in @inventory.get("slots")
+      != JST["templates/slot"].call(slot: new Page.Models.Slot(slot))

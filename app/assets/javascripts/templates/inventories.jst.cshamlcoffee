@@ -1,0 +1,4 @@
+%h3 inventories
+- for inventory in @inventories.models
+  != JST["templates/inventory"].call(inventory: inventory)
+

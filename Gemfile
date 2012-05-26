@@ -37,6 +37,9 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+gem "haml"
 gem "twitter-bootstrap-rails"
 gem "cshaml-sprockets"
+gem "js-routes"
 
+gem "awesome_print"

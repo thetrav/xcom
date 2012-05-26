@@ -1,0 +1,4 @@
+.slot
+  = @slot.get("name")
+  - if @slot.get("item")
+    != JST["templates/item"].call(item: new Page.Models.Item(@slot.get("item")))
