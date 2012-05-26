@@ -1,12 +1,10 @@
 window.Page =
   Views: {},
   Routers: {},
+  routers: {},
   Models: {},
   Collections: {},
   Dispatcher: _.clone(Backbone.Events)
   init: () ->
-    new Page.Collections.Inventories()
-    new Page.Routers.Inventories()
+    Page.routers.inventories = new Page.Routers.Inventories()
     Backbone.history.start()
-
-

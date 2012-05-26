@@ -2,13 +2,6 @@ Page.Views.Index = Backbone.View.extend(
   initialize: () ->
     @inventories = @options.collection
     @render()
-    Page.Dispatcher.on("index:slot:update", (e) =>
-      inventories = new Page.Collections.Inventories
-      inventories.fetch(
-        success: () -> new Page.Views.Index(collection:inventories)
-        error: () -> new Error(message:"error loading inventories.")
-      )
-    )
 
   render: () ->
     html = JST["templates/inventories"].call(inventories: @inventories)
@@ -16,7 +9,7 @@ Page.Views.Index = Backbone.View.extend(
     $('#app').html(@el)
     $('.item-picker').click((event) => @pickItem(event))
     $('.item').click((event) => @pickItem(event))
-
+    console.log("index viewed")
 
   pickItem: (event) ->
     $(event.currentTarget).css("background", "red")

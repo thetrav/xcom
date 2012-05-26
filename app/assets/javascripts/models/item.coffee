@@ -11,3 +11,8 @@ Page.Collections.ItemSelectMenu = Backbone.Collection.extend(
   model:Page.Models.Item
   url: '/items'
 )
+
+Page.Collections.BaseInventoryMenu = Backbone.Collection.extend(
+  model:Page.Models.Item
+  url: '/items'
+)
