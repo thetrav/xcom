@@ -11,3 +11,53 @@
  *= require_self
  *= require_tree .
 */
+
+.inventory {
+    margin-left: 10pt;
+    padding: 5px;
+    background-color: #EEE;
+    border: 1px solid #E5E5E5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.slot {
+    margin-left: 10px;
+    padding: 5px;
+
+    background-color: #EEE;
+    background-repeat: repeat-x;
+    border: 1px solid #E5E5E5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.item {
+    margin-left: 10px;
+    padding: 5px;
+    width: 100px;
+
+    background-color: #B4D455;
+    background-repeat: repeat-x;
+    background-image: linear-gradient(top, whiteSmoke 0%, #EE4 100%);
+    border: 1px solid #111;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.item-picker {
+    margin-left: 10px;
+    padding: 5px;
+    width: 100px;
+
+    background-color: #B4D455;
+    background-repeat: repeat-x;
+    background-image: linear-gradient(top, whiteSmoke 0%, #EE4 100%);
+    border: 1px solid #111;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}

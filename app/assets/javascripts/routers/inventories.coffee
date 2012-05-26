@@ -12,7 +12,6 @@ Page.Routers.Inventories = Backbone.Router.extend(
     )
 
   index: () ->
-    console.log("inventory route followed")
     inventories = new Page.Collections.Inventories
     inventories.fetch(
       success: () -> new Page.Views.Index(collection:inventories)

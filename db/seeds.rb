@@ -21,3 +21,6 @@ bottom_rail = Slot.new(:name => "bottom rail")
 rifle_accessories.slots << bottom_rail
 
 travis.save!
+
+Item.create(:name => "UGL")
+Item.create(:name => "Strap")

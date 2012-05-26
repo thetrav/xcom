@@ -1,6 +1,6 @@
 Xcom::Application.routes.draw do
 
-  resources :inventories
+  resources :inventories, :items
 
   root :to => 'page#index'
 
