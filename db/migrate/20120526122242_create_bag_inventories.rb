@@ -13,13 +13,11 @@ class CreateBagInventories < ActiveRecord::Migration
     end
 
     add_column :inventories, :player_id, :integer
-    add_column :slots, :bag_id, :integer
     add_column :items, :bag_id, :integer
   end
 
   def down
     drop_column :items, :bag_id
-    drop_column :slots, :bag_id
     drop_column :inventories, :player_id
 
     drop_table :player

@@ -1,4 +1,4 @@
-.slot{"id": @slot.get("id")}
+.slot{"data-id": @slot.get("id") }
   .label= @slot.get("name")
   - if @slot.get("item")
     != JST["templates/item"].call(item: new Page.Models.Item(@slot.get("item")))

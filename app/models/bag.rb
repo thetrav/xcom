@@ -1,15 +1,14 @@
 class Bag < ActiveRecord::Base
-  attr_accessible :name, :item_id, :player_id, :slots, :id, :updated_at, :created_at
+  attr_accessible :name, :item_id, :player_id, :items, :id, :updated_at, :created_at
 
   belongs_to :item
   belongs_to :player
 
-  has_many :slots
-  accepts_nested_attributes_for :slots
+  has_many :items
 
   def jsonify
     hash = as_json
-    hash = hash.merge({:slots => slots.map {|it| it.jsonify}}) unless slots.nil?
+    hash = hash.merge({:items => items.map {|it| it.jsonify}}) unless items.nil?
     hash
   end
 end

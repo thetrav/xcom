@@ -1,2 +1,4 @@
 .bag{"data-id": @bag.get("id") }
   .label = @bag.get("name")
+  - for item in @bag.get("items")
+    != JST["templates/item"].call(item: new Page.Models.Item(item))

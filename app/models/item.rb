@@ -1,11 +1,10 @@
 class Item < ActiveRecord::Base
-  attr_accessible :name, :slot_id
+  attr_accessible :name, :slot_id, :bag_id
 
   belongs_to :slot
   belongs_to :bag
 
   has_one :inventory
-  #has_one :bag
 
   def jsonify
     hash = as_json

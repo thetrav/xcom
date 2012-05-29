@@ -8,6 +8,6 @@ Page.Views.BaseInventoryMenu = Backbone.View.extend(
     $(@el).html(html)
     $('#left-menu').html(@el)
     $('#left-menu .item').draggable(
-      revert: true
+      revert: "invalid"
     )
 )

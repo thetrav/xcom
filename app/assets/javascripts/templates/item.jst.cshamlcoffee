@@ -1,3 +1,3 @@
-.item{"data-id": @item.get("slot_id") }
+.item{"data-id": @item.get("id") }
   .item-label= @item.get("name")
   != if @item.get("inventory") then JST["templates/inventory"].call(inventory: new Page.Models.Inventory(@item.get("inventory"))) else ""

@@ -9,5 +9,6 @@ Page.Views.ItemSelectMenu = Backbone.View.extend(
     $(@el).html(html)
     $('#left-menu').html(@el)
     $('#left-menu .item').click((event) =>
+      console.log ("leftitem clicked")
       Page.Dispatcher.trigger("Slot:#{@target}:ItemSelected", $(event.currentTarget).data("id")))
 )
