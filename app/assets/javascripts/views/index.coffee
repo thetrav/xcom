@@ -1,15 +1,19 @@
 Page.Views.Index = Backbone.View.extend(
   initialize: () ->
-    @inventories = @options.collection
+    @players = @options.collection
     @render()
 
   render: () ->
-    html = JST["templates/inventories"].call(inventories: @inventories)
+    html = ""
+    for player in @players.models
+      html += JST["templates/player"].call(player: new Page.Models.Player(player))
     $(@el).html(html)
     $('#app').html(@el)
     $('.item-picker').click((event) => @pickItem(event))
     $('.item').click((event) => @pickItem(event))
-    console.log("index viewed")
+    $('#app .bag').droppable(
+      drop : (e) => @bagItem(e)
+    )
 
   pickItem: (event) ->
     $(event.currentTarget).css("background", "red")
@@ -22,4 +26,9 @@ Page.Views.Index = Backbone.View.extend(
       error: () -> new Error(message:"error loading items.")
     )
     false
+
+  bagItem: (event) ->
+    bagId = $(event.target).data("id")
+    itemId = $(event.srcElement).data("id")
+    console.log("drag item "+itemId+"onto "+bagId)
 )

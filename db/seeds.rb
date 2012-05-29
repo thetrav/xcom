@@ -6,9 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-travis = Inventory.new(:name => "travis")
+travis = Player.new(:name => "travis")
+inventory = Inventory.new(:name => "Active Items")
+travis.inventories << inventory
 weapon = Slot.new(:name => "primary weapon")
-travis.slots << weapon
+inventory.slots << weapon
 rifle = Item.new(:name => "AK-47")
 weapon.item = rifle
 rifle_accessories = Inventory.new(:name => "rifle accessories")
@@ -19,6 +21,9 @@ scope = Item.new(:name => "scope")
 top_rail.item = scope
 bottom_rail = Slot.new(:name => "bottom rail")
 rifle_accessories.slots << bottom_rail
+
+backpack = Bag.new(:name => "Back Pack")
+travis.bags << backpack
 
 travis.save!
 

@@ -7,5 +7,7 @@ Page.Views.BaseInventoryMenu = Backbone.View.extend(
     html = JST["templates/baseInventoryMenu"].call(items: @items)
     $(@el).html(html)
     $('#left-menu').html(@el)
-    console.log("base inventory view")
+    $('#left-menu .item').draggable(
+      revert: true
+    )
 )

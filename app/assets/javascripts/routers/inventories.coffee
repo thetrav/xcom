@@ -3,11 +3,10 @@ Page.Routers.Inventories = Backbone.Router.extend(
     "" : "index"
 
   index: () ->
-    console.log("index")
-    inventories = new Page.Collections.Inventories
-    inventories.fetch(
-      success: () -> new Page.Views.Index(collection:inventories)
-      error: () -> new Error(message:"error loading inventories.")
+    players = new Page.Collections.Players
+    players.fetch(
+      success: () -> new Page.Views.Index(collection:players)
+      error: () -> new Error(message:"error loading players.")
     )
 
     items = new Page.Collections.BaseInventoryMenu

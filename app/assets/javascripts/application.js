@@ -13,6 +13,7 @@
 //= require coffee-script
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require twitter/bootstrap
 //= require json2
 //= require underscore
@@ -20,6 +21,8 @@
 //= require haml
 //= require js-routes
 //= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
 //= require page
 
 //= require_tree .

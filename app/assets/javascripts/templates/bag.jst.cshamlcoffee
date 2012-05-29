@@ -1,0 +1,2 @@
+.bag{"data-id": @bag.get("id") }
+  .label = @bag.get("name")
