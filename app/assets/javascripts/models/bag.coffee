@@ -15,7 +15,7 @@ Page.Models.Bag = Backbone.Model.extend(
     item.set("bag_id", @get("id"))
     item.save({},
       success: () =>
-        Page.routers.inventories.index()
+        Page.reload()
       error: (e) =>
         new Error(e)
     )

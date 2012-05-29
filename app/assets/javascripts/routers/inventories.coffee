@@ -3,6 +3,7 @@ Page.Routers.Inventories = Backbone.Router.extend(
     "" : "index"
 
   index: () ->
+    Page.Dispatcher.off()
     players = new Page.Collections.Players
     players.fetch(
       success: () -> new Page.Views.Index(collection:players)

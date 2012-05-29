@@ -12,10 +12,7 @@ Page.Views.Index = Backbone.View.extend(
     $('.item-picker').click((event) => @pickItem(event))
     $('.slot > .item').click((event) => @pickItem(event))
     $('.bag > .item').click((event) => @unbagItem(event))
-    $('#app .bag').droppable(
-      drop : (e) =>
-        @bagItem(e)
-    )
+    $('#app .bag').droppable( drop : (e) => @bagItem(e) )
 
   pickItem: (event) ->
     el = $(event.currentTarget)
@@ -24,7 +21,6 @@ Page.Views.Index = Backbone.View.extend(
     items = new Page.Collections.ItemSelectMenu
     items.fetch(
       success: () ->
-        console.log("dislaying select menu")
         new Page.Views.ItemSelectMenu(
           collection:items,
           target: slotId
@@ -45,10 +41,8 @@ Page.Views.Index = Backbone.View.extend(
     item.fetch
     item.set("bag_id", "")
     item.save({},
-      success: () ->
-        Page.routers.inventories.index()
-      error: (e) ->
-        new Error(e)
+      success: () -> Page.reload()
+      error: (e) -> new Error(e)
     )
     false
 )
