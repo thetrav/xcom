@@ -55,6 +55,12 @@ module Xcom
     # Enable the asset pipeline
     config.assets.enabled = true
     # disable compression, messes up coffee script haml templates on heroku
+    class NoCompressor
+      def compress(string)
+        string
+      end
+    end
+    config.assets.js_compressor = NoCompressor.new
     config.assets.compress = false
     config.assets.initialize_on_precompile = false
 
