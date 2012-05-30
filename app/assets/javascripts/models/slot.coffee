@@ -9,7 +9,23 @@ Page.Models.Slot = Backbone.Model.extend(
       base + (if base.charAt(base.length - 1) == '/' then '' else '/') + this.id
 
   initialize: () ->
-    Page.Dispatcher.on("Slot:#{@get("id")}:ItemSelected", (event) => @itemSelected(event) )
+    pickEvent = "Slot:#{@get("id")}:pickItem"
+    Page.Dispatcher.on(pickEvent, (event) => @pickItem(event) )
+    Page.Dispatcher.on("Slot:#{@get("id")}:itemSelected", (event) => @itemSelected(event) )
+
+  pickItem: (event) ->
+    el = $(event.currentTarget)
+    el.css("background", "red")
+    items = new Page.Collections.ItemSelectMenu
+    items.fetch(
+      success: () =>
+        new Page.Views.ItemSelectMenu(
+          collection:items,
+          slot: this
+        )
+      error: () -> new Error(message:"error loading items.")
+    )
+    false
 
   itemSelected: (item_id) ->
     if @get("item")
@@ -39,4 +55,14 @@ Page.Models.Slot = Backbone.Model.extend(
       )
     else
       Page.reload()
+
+  accepts: (item) ->
+    if @get("accepts")
+      for accept in @get("accepts")
+        if accept == item.get("name")
+          return true
+        if item.get("aliases")
+          for alias in item.get("aliases")
+            if accept == alias
+              return true
 )

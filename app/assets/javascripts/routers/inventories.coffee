@@ -3,6 +3,7 @@ Page.Routers.Inventories = Backbone.Router.extend(
     "" : "index"
 
   index: () ->
+    console.log("clearing dispatcher")
     Page.Dispatcher.off()
     players = new Page.Collections.Players
     players.fetch(

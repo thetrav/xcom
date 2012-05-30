@@ -1,5 +1,7 @@
 class Item < ActiveRecord::Base
-  attr_accessible :name, :slot_id, :bag_id
+  attr_accessible :name, :slot_id, :bag_id, :aliases
+
+  serialize :aliases
 
   belongs_to :slot
   belongs_to :bag

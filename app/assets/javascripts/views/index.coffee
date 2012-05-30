@@ -15,19 +15,9 @@ Page.Views.Index = Backbone.View.extend(
     $('#app .bag').droppable( drop : (e) => @bagItem(e) )
 
   pickItem: (event) ->
-    el = $(event.currentTarget)
-    el.css("background", "red")
-    slotId = el.closest(".slot").data("id")
-    items = new Page.Collections.ItemSelectMenu
-    items.fetch(
-      success: () ->
-        new Page.Views.ItemSelectMenu(
-          collection:items,
-          target: slotId
-        )
-      error: () -> new Error(message:"error loading items.")
-    )
-    false
+    slotId = $(event.currentTarget).closest(".slot").data("id")
+    trigger = "Slot:#{slotId}:pickItem"
+    Page.Dispatcher.trigger(trigger, event)
 
   bagItem: (event) ->
     bagId = $(event.target).data("id")

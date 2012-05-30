@@ -7,25 +7,27 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 travis = Player.new(:name => "travis")
-inventory = Inventory.new(:name => "Active Items")
+inventory = Inventory.new(:name => "Gear")
+inventory.slots << Slot.new(:name => "Primary Weapon", :accepts => ["weapon"])
+inventory.slots << Slot.new(:name => "Side Arm", :accepts => ["side-arm"])
+inventory.slots << Slot.new(:name => "Slung Weapon", :accepts => ["weapon"])
+inventory.slots << Slot.new(:name => "Melee Weapon", :accepts => ["melee"])
+inventory.slots << Slot.new(:name => "Melee Weapon", :accepts => ["melee"])
+inventory.slots << Slot.new(:name => "Chest", :accepts => [])
+inventory.slots << Slot.new(:name => "Belt", :accepts => ["belt"])
+inventory.slots << Slot.new(:name => "Pack", :accepts => ["backpack"])
 travis.inventories << inventory
-weapon = Slot.new(:name => "primary weapon")
-inventory.slots << weapon
-rifle = Item.new(:name => "AK-47")
-weapon.item = rifle
-rifle_accessories = Inventory.new(:name => "rifle accessories")
-rifle.inventory = rifle_accessories
-top_rail = Slot.new(:name => "top rail")
-rifle_accessories.slots << top_rail
-scope = Item.new(:name => "scope")
-top_rail.item = scope
-bottom_rail = Slot.new(:name => "bottom rail")
-rifle_accessories.slots << bottom_rail
 
-backpack = Bag.new(:name => "Back Pack")
-travis.bags << backpack
+armour = Bag.new(:name => "Armour")
+travis.bags << armour
 
 travis.save!
 
-Item.create(:name => "UGL")
-Item.create(:name => "Strap")
+Item.create(:name => "Utility Belt", :aliases => "belt")
+Item.create(:name => "Full Belt", :aliases => "belt")
+
+Item.create(:name => "Day Pack", :aliases => ["backpack"])
+Item.create(:name => "Big Pack", :aliases => ["backpack"])
+Item.create(:name => "Ammo Pack", :aliases => ["backpack"])
+Item.create(:name => "Exo Pack Std", :aliases => ["backpack"])
+Item.create(:name => "Exo Pack Ammo", :aliases => ["backpack"])

@@ -1,5 +1,7 @@
 class Slot < ActiveRecord::Base
-  attr_accessible :name, :inventory_id, :id
+  attr_accessible :name, :inventory_id, :id, :accepts
+
+  serialize :accepts
 
   belongs_to :inventory
 
