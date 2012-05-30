@@ -19,7 +19,6 @@
 //= require underscore
 //= require underscore.string
 //= require haml
-//= require js-routes
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
