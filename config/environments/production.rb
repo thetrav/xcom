@@ -11,8 +11,15 @@ Xcom::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
 
-  # Compress JavaScripts and CSS
-  config.assets.compress = true
+  # disable compression, messes up coffee script haml templates on heroku
+  #class NoCompressor
+  #  def compress(string)
+  #    string
+  #  end
+  #end
+  #config.assets.js_compressor = NoCompressor.new
+  config.assets.compress = false
+  config.assets.initialize_on_precompile = false
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
