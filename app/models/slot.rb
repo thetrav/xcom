@@ -8,11 +8,7 @@ class Slot < ActiveRecord::Base
   has_one :item
 
   def weight
-    if item
-      item.weight
-    else
-      0
-    end
+    item.nil? ? 0 : item.total_weight
   end
 
   def jsonify

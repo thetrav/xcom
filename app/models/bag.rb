@@ -13,7 +13,7 @@ class Bag < ActiveRecord::Base
   end
 
   def weight
-    items.sum{|it|it.weight}
+    items.sum{|it|it.total_weight}
   end
 
   def jsonify
