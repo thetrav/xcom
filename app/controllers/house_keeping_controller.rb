@@ -16,7 +16,6 @@ class HouseKeepingController < ApplicationController
 
   def upload_players
     process_file do |row|
-      puts "row #{row}"
       player = Player.create(:name => row["Name"])
 
       player.slots << Slot.new(:name => "Primary Weapon", :accepts => ["primary-weapon"])
