@@ -1,5 +1,7 @@
 .item{"data-id": @item.get("id") }
   .item-label= @item.get("name")
+  .item-space= @item.get("space")
+  .item-weight= @item.get("weight")
   - inv = @item.get("inventory")
   != if inv then JST["templates/inventory"].call(inventory: new Page.Models.Inventory(inv)) else ""
 

@@ -4,10 +4,16 @@ class Player < ActiveRecord::Base
   has_many :inventories
   has_many :bags
 
+  def weight
+    (inventories.sum {|it| it.weight}) + (bags.sum {|it| it.weight})
+
+  end
+
   def jsonify
     hash = as_json
-    hash = hash.merge({:inventories => inventories.map {|it| it.jsonify}}) unless inventories.nil?
-    hash = hash.merge({:bags => bags.map {|it| it.jsonify}}) unless inventories.nil?
+    hash.merge!({:weight => weight})
+    hash.merge!({:inventories => inventories.map {|it| it.jsonify}}) unless inventories.nil?
+    hash.merge!({:bags => bags.map {|it| it.jsonify}}) unless inventories.nil?
     hash
   end
 end

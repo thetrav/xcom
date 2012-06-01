@@ -6,6 +6,10 @@ class Inventory < ActiveRecord::Base
   has_many :slots
   accepts_nested_attributes_for :slots
 
+  def weight
+    slots.sum{|it| it.weight}
+  end
+
   def jsonify
     hash = as_json
     hash = hash.merge({:slots => slots.map {|it| it.jsonify}}) unless slots.nil?

@@ -1,6 +1,9 @@
-= @player.get("name")
-- for inventory in @player.get("inventories")
-  != JST["templates/inventory"].call(inventory: new Page.Models.Inventory(inventory))
-
-- for bag in @player.get("bags")
-  != JST["templates/bag"].call(bag: new Page.Models.Bag(bag))
+#{@player.get("name")} is carrying #{@player.get("weight")}kg of stuff
+.container-fluid
+  .row-fluid
+    .span6
+      - for inventory in @player.get("inventories")
+        != JST["templates/inventory"].call(inventory: new Page.Models.Inventory(inventory))
+    .span6
+      - for bag in @player.get("bags")
+        != JST["templates/bag"].call(bag: new Page.Models.Bag(bag))

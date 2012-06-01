@@ -8,9 +8,18 @@ class Bag < ActiveRecord::Base
 
   has_many :items
 
+  def used_capacity
+    items.sum{|it| it.space}
+  end
+
+  def weight
+    items.sum{|it|it.weight}
+  end
+
   def jsonify
     hash = as_json
-    hash = hash.merge({:items => items.map {|it| it.jsonify}}) unless items.nil?
+    hash.merge!({:used_capacity => used_capacity})
+    hash.merge!({:items => items.map {|it| it.jsonify}}) unless items.nil?
     hash
   end
 end
