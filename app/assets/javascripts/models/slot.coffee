@@ -36,7 +36,7 @@ Page.Models.Slot = Backbone.Model.extend(
   clearOldItem: (item_id) ->
     oldItem = new Page.Models.Item(@get("item"))
 
-    oldItem.set("slot_id", "")
+    oldItem.set("slot_parent_id", "")
     oldItem.save({},
       success: (e) => @setNewItem(item_id)
       error: (e) => new Error(e)
@@ -46,7 +46,7 @@ Page.Models.Slot = Backbone.Model.extend(
     if item_id
       newItem = new Page.Models.Item("id": item_id)
       newItem.fetch()
-      newItem.set("slot_id", @get("id"))
+      newItem.set("slot_parent_id", @get("id"))
       newItem.save({},
         success: (e) =>
           Page.reload()
@@ -59,7 +59,7 @@ Page.Models.Slot = Backbone.Model.extend(
   accepts: (item) ->
     if @get("accepts")
       for accept in @get("accepts")
-        if accept == item.get("name")
+        if accept == item.get("name") or accept == "all"
           return true
         if item.get("aliases")
           for alias in item.get("aliases")

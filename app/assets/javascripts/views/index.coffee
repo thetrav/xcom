@@ -18,21 +18,17 @@ Page.Views.Index = Backbone.View.extend(
     slotId = $(event.currentTarget).closest(".slot").data("id")
     trigger = "Slot:#{slotId}:pickItem"
     Page.Dispatcher.trigger(trigger, event)
+    false
 
   bagItem: (event) ->
     bagId = $(event.target).data("id")
     itemId = $(event.srcElement).data("id")
 
     Page.Dispatcher.trigger("Item:#{itemId}:bag", bagId)
+    false
 
   unbagItem: (event) ->
     itemId = $(event.currentTarget).data("id")
-    item = new Page.Models.Item("id":itemId)
-    item.fetch
-    item.set("bag_id", "")
-    item.save({},
-      success: () -> Page.reload()
-      error: (e) -> new Error(e)
-    )
+    Page.Dispatcher.trigger("Item:#{itemId}:unBag")
     false
 )

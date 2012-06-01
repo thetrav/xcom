@@ -1,0 +1,28 @@
+%h1 Clear all data
+= form_tag ({:controller => :house_keeping, :action => :clear}) do
+  = submit_tag
+%h1 Upload data
+
+%h2 Players
+= form_tag ({:controller => :house_keeping, :action => :upload_players}), :multipart => true do
+  = file_field_tag :data
+  %br/
+  = submit_tag
+
+%h2 Items
+= form_tag ({:controller => :house_keeping, :action => :upload_items}), :multipart => true do
+  = file_field_tag :data
+  %br/
+  = submit_tag
+
+%h2 Slots
+= form_tag ({:controller => :house_keeping, :action => :upload_slots}), :multipart => true do
+  = file_field_tag :data
+  %br/
+  = submit_tag
+
+%h2 Bags
+= form_tag ({:controller => :house_keeping, :action => :upload_bags}), :multipart => true do
+  = file_field_tag :data
+  %br/
+  = submit_tag

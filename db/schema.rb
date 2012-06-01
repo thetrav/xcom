@@ -11,33 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120530230702) do
+ActiveRecord::Schema.define(:version => 20120526023220) do
 
   create_table "bags", :force => true do |t|
     t.string   "name"
-    t.integer  "item_id"
-    t.integer  "player_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.text     "accepts"
     t.float    "capacity"
-  end
-
-  create_table "inventories", :force => true do |t|
-    t.string   "name"
-    t.integer  "item_id"
+    t.text     "accepts"
+    t.integer  "player_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "player_id"
   end
 
   create_table "items", :force => true do |t|
     t.string  "name"
-    t.integer "slot_id"
-    t.integer "bag_id"
     t.text    "aliases"
     t.float   "space"
     t.float   "weight"
+    t.integer "slot_parent_id"
+    t.integer "bag_parent_id"
+    t.integer "bag_child_id"
   end
 
   create_table "players", :force => true do |t|
@@ -47,9 +39,12 @@ ActiveRecord::Schema.define(:version => 20120530230702) do
   end
 
   create_table "slots", :force => true do |t|
-    t.string  "name"
-    t.integer "inventory_id"
-    t.text    "accepts"
+    t.string   "name"
+    t.text     "accepts"
+    t.integer  "player_id"
+    t.integer  "item_parent_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
 end

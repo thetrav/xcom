@@ -8,6 +8,14 @@ Page.Models.Item = Backbone.Model.extend(
 
   initialize: () ->
     Page.Dispatcher.on("Item:#{@get("id")}:bag", (bagId) => Page.Dispatcher.trigger("Bag:#{bagId}:addItem", this))
+    Page.Dispatcher.on("Item:#{@get("id")}:unBag", () => @unBag())
+
+  unBag: () ->
+    @set("bag_parent_id", "")
+    @save({},
+      success: () -> Page.reload()
+      error: (e) -> new Error(e)
+    )
 )
 
 Page.Collections.ItemSelectMenu = Backbone.Collection.extend(

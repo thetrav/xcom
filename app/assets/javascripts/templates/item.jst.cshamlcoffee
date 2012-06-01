@@ -4,8 +4,8 @@
       .item-space= @item.get("space")
       .item-weight= @item.get("total_weight")
     = @item.get("name")
-  - inv = @item.get("inventory")
-  != if inv then JST["templates/inventory"].call(inventory: new Page.Models.Inventory(inv)) else ""
+  - for slot in @item.get("slot_children")
+    != JST["templates/slot"].call(slot: new Page.Models.Slot(slot))
 
   -bag = @item.get("bag_child")
   != if bag then JST["templates/bag"].call(bag: new Page.Models.Bag(bag)) else ""

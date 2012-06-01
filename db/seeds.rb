@@ -7,16 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 travis = Player.new(:name => "travis")
-inventory = Inventory.new(:name => "Gear")
-inventory.slots << Slot.new(:name => "Primary Weapon", :accepts => ["weapon"])
-inventory.slots << Slot.new(:name => "Side Arm", :accepts => ["side-arm"])
-inventory.slots << Slot.new(:name => "Slung Weapon", :accepts => ["weapon"])
-inventory.slots << Slot.new(:name => "Melee Weapon", :accepts => ["melee"])
-inventory.slots << Slot.new(:name => "Melee Weapon", :accepts => ["melee"])
-inventory.slots << Slot.new(:name => "Chest", :accepts => [])
-inventory.slots << Slot.new(:name => "Belt", :accepts => ["belt"])
-inventory.slots << Slot.new(:name => "Pack", :accepts => ["backpack"])
-travis.inventories << inventory
+travis.slots << Slot.new(:name => "Primary Weapon", :accepts => ["weapon"])
+travis.slots << Slot.new(:name => "Side Arm", :accepts => ["side-arm"])
+travis.slots << Slot.new(:name => "Slung Weapon", :accepts => ["weapon"])
+travis.slots << Slot.new(:name => "Melee Weapon", :accepts => ["melee"])
+travis.slots << Slot.new(:name => "Melee Weapon", :accepts => ["melee"])
+travis.slots << Slot.new(:name => "Chest", :accepts => [])
+travis.slots << Slot.new(:name => "Belt", :accepts => ["belt"])
+travis.slots << Slot.new(:name => "Pack", :accepts => ["backpack"])
 
 armour = Bag.new(:name => "Armour")
 travis.bags << armour

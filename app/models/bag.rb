@@ -3,10 +3,10 @@ class Bag < ActiveRecord::Base
 
   serialize :accepts
 
-  belongs_to :item
   belongs_to :player
 
-  has_many :items
+  has_one :item_parent, :class_name => "Item", :foreign_key => :bag_child_id
+  has_many :items, :class_name => "Item", :foreign_key => :bag_parent_id
 
   def used_capacity
     items.sum{|it| it.space}

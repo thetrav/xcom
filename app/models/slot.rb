@@ -1,11 +1,11 @@
 class Slot < ActiveRecord::Base
-  attr_accessible :name, :inventory_id, :id, :accepts
+  attr_accessible :name, :item_parent_id, :id, :accepts
 
   serialize :accepts
 
-  belongs_to :inventory
+  belongs_to :item_parent, :class_name => "Item", :foreign_key => :item_parent_id
+  has_one :item, :class_name => "Item", :foreign_key => :slot_parent_id
 
-  has_one :item
 
   def weight
     item.nil? ? 0 : item.total_weight
