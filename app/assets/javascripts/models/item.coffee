@@ -5,6 +5,9 @@ Page.Models.Item = Backbone.Model.extend(
       base
     else
       base + (if base.charAt(base.length - 1) == '/' then '' else '/') + this.id
+
+  initialize: () ->
+    Page.Dispatcher.on("Item:#{@get("id")}:bag", (bagId) => Page.Dispatcher.trigger("Bag:#{bagId}:addItem", this))
 )
 
 Page.Collections.ItemSelectMenu = Backbone.Collection.extend(

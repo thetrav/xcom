@@ -1,5 +1,7 @@
 class Bag < ActiveRecord::Base
-  attr_accessible :name, :item_id, :player_id, :items, :id, :updated_at, :created_at
+  attr_accessible :name, :capacity, :accepts, :item_id, :player_id, :items, :id, :updated_at, :created_at
+
+  serialize :accepts
 
   belongs_to :item
   belongs_to :player

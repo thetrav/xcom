@@ -23,7 +23,7 @@ Page.Views.Index = Backbone.View.extend(
     bagId = $(event.target).data("id")
     itemId = $(event.srcElement).data("id")
 
-    Page.Dispatcher.trigger("Bag:#{bagId}:addItem", itemId)
+    Page.Dispatcher.trigger("Item:#{itemId}:bag", bagId)
 
   unbagItem: (event) ->
     itemId = $(event.currentTarget).data("id")

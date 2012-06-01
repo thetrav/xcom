@@ -1,3 +1,7 @@
 .item{"data-id": @item.get("id") }
   .item-label= @item.get("name")
-  != if @item.get("inventory") then JST["templates/inventory"].call(inventory: new Page.Models.Inventory(@item.get("inventory"))) else ""
+  - inv = @item.get("inventory")
+  != if inv then JST["templates/inventory"].call(inventory: new Page.Models.Inventory(inv)) else ""
+
+  -bag = @item.get("bag_child")
+  != if bag then JST["templates/bag"].call(bag: new Page.Models.Bag(bag)) else ""
