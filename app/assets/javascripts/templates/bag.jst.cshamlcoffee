@@ -1,9 +1,9 @@
-.bag{"data-id": @bag.get("id") }
-  .label
+.bag{"data-id": @bag.id }
+  .label{"data-toggle":"collapse", "data-target":"#bag##{@bag.id}"}
     .icons
       .used-capacity= @bag.get("used_capacity")
       .capacity= @bag.get("capacity")
     =@bag.get("name")
-
-  - for item in @bag.get("items")
-    != JST["templates/item"].call(item: new Page.Models.Item(item))
+  .contents{"id":"bag#{@bag.id}"}
+    - for item in @bag.get("items")
+      != JST["templates/item"].call(item: new Page.Models.Item(item))

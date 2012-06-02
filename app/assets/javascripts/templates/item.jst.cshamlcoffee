@@ -1,11 +1,14 @@
-.item{"data-id": @item.get("id") }
+.item{"data-id": @item.id }
   .item-label
     .icons
       .item-space= @item.get("space")
       .item-weight= @item.get("total_weight")
-    = @item.get("name")
-  - for slot in @item.get("slot_children")
-    != JST["templates/slot"].call(slot: new Page.Models.Slot(slot))
+      %button#drop.btn{"data-toggle":"button"} -
+    %a{"href":"#", "data-toggle":"collapse", "data-target":"#item#{@item.id}"}
+      = @item.get("name")
+  .contents.collapse{"id":"item#{@item.id}"}
+    - for slot in @item.get("slot_children")
+      != JST["templates/slot"].call(slot: new Page.Models.Slot(slot))
 
-  -bag = @item.get("bag_child")
-  != if bag then JST["templates/bag"].call(bag: new Page.Models.Bag(bag)) else ""
+    -bag = @item.get("bag_child")
+    != if bag then JST["templates/bag"].call(bag: new Page.Models.Bag(bag)) else ""
