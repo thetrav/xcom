@@ -9,7 +9,18 @@ Page.Views.Item = Backbone.View.extend {
     @el = @parent.append(JST["templates/item"].call(item:@item, baseItem: baseItem))
     @el.hide()
     @el.fadeIn()
+    @bindEvents()
     for child in Page.items.where(parent_item_id : @item.id)
       parent = @el.find("#item#{@item.id} > .items")
       child.view = new Page.Views.Item(parent:parent, item:child)
+
+  bindEvents: () ->
+    controls = @el.find("#item-#{@item.id}-controls").first()
+    controls.find(".addItem").click( (e) =>
+      new Page.Views.AddItemDialog(target:@item, itemsUrl:"/base_items_for_item/#{@item.id}")
+    )
+
+  addItem: (child) ->
+    parent = @el.find("#item-#{@item.id}-items")
+    child.view = new Page.Views.Item(parent:parent, item:child)
 }

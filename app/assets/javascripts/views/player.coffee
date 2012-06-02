@@ -10,7 +10,6 @@ Page.Views.Player = Backbone.View.extend(
     $('ul.nav-tabs a:first').tab('show');
 
   bindEvents: () ->
-    console.log("binding events")
     @el.find(".addItem").click( (e) =>
       new Page.Views.AddItemDialog(target:@player, itemsUrl:'/base_items_for_player'))
 

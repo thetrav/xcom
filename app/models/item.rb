@@ -16,7 +16,6 @@ class Item < ActiveRecord::Base
   delegate :aliases, :to => :base_item
   delegate :goes_in, :to => :base_item
 
-
   def total_weight
     total = weight
     total += items.sum {|it| it.total_weight}
