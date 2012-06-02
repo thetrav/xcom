@@ -1,4 +1,0 @@
-%h3 Base Items:
-- for item in @items.models
-  .item{"data-id": item.get("id")}
-    = item.get("name")

@@ -1,10 +1,14 @@
 Page.Models.Player = Backbone.Model.extend(
-  url: () ->
-    base = 'players'
-    if this.isNew()
-      base
-    else
-      base + (if base.charAt(base.length - 1) == '/' then '' else '/') + this.id
+  url: () -> Page.Helpers.url('items')
+
+  addItem:(baseItem) ->
+    console.log("adding item #{baseItem.id}")
+    item = new Page.Models.Item(
+      base_item_id:baseItem.id,
+      player_id:@id
+    )
+    item.save()
+    @view.addItem(item)
 )
 
 Page.Collections.Players = Backbone.Collection.extend(

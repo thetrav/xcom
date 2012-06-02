@@ -5,15 +5,19 @@ class Resty < ApplicationController
     it.update_attributes(params[param])
     it.save!
 
-    render :json => it.jsonify
+    render :json => it
+  end
+
+  def create
+    render :json => clazz.create!(params[param])
   end
 
   def show
-    render :json => clazz.find(params[:id]).jsonify
+    render :json => clazz.find(params[:id])
   end
 
   def index
-    render :json => clazz.all.map{|it| it.jsonify}
+    render :json => clazz.all
   end
 
   private

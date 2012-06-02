@@ -1,8 +1,0 @@
-.slot{"data-id": @slot.id }
-  .label{"data-toggle":"collapse", "data-target":"#slot#{@slot.id}"}
-    = @slot.get("name")
-  .slot-contents.collapse{"id":"slot#{@slot.id}"}
-    - if @slot.get("item")
-      != JST["templates/item"].call(item: new Page.Models.Item(@slot.get("item")))
-    - else
-      .item-picker{"data-id": @slot.id} No Item

@@ -6,8 +6,6 @@ class HouseKeepingController < ApplicationController
   end
 
   def clear
-    Bag.all.each {|it| it.destroy}
-    Slot.all.each{|it| it.destroy}
     Item.all.each{|it| it.destroy}
     Player.all.each{|it| it.destroy }
 
@@ -29,28 +27,6 @@ class HouseKeepingController < ApplicationController
 
       player.bags << Bag.create(:name => "Armour", :accepts => ["armour"])
       player.save!
-    end
-    render :text => "success"
-  end
-
-  def upload_slots
-    process_file do |row|
-      Slot.create!(:name => row[:label],
-                   :accepts => row[:accepts].split(','),
-                   :item_parent_id => Item.find_by_name(row[:item_name]).id)
-    end
-    render :text => "success"
-  end
-
-  def upload_bags
-    process_file do |row|
-      bag = Bag.create!(:name => row[:label],
-                 :capacity => row[:capacity],
-                 :accepts => row[:accepts].split(','))
-      item = Item.find_by_name(row[:item_name])
-      item.bag_child_id = bag.id
-      item.save!
-      bag.save!
     end
     render :text => "success"
   end

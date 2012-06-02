@@ -13,38 +13,27 @@
 
 ActiveRecord::Schema.define(:version => 20120526023220) do
 
-  create_table "bags", :force => true do |t|
-    t.string   "name"
-    t.float    "capacity"
-    t.text     "accepts"
-    t.integer  "player_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "items", :force => true do |t|
+  create_table "base_items", :force => true do |t|
     t.string  "name"
     t.text    "aliases"
     t.float   "space"
     t.float   "weight"
-    t.integer "slot_parent_id"
-    t.integer "bag_parent_id"
-    t.integer "bag_child_id"
+    t.float   "capacity"
+    t.text    "accepts"
+    t.text    "goes_in"
+    t.integer "quantity"
+  end
+
+  create_table "items", :force => true do |t|
+    t.integer "base_item_id"
+    t.integer "parent_item_id"
+    t.integer "player_id"
   end
 
   create_table "players", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "slots", :force => true do |t|
-    t.string   "name"
-    t.text     "accepts"
-    t.integer  "player_id"
-    t.integer  "item_parent_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
   end
 
 end

@@ -1,18 +1,9 @@
 class Player < ActiveRecord::Base
-  attr_accessible :name, :id, :updated_at, :created_at, :inventories, :bags
+  attr_accessible :id, :name, :item_ids, :updated_at, :created_at
 
-  has_many :slots
-  has_many :bags
+  has_many :items, :class_name => "Item", :foreign_key => "player_id"
 
   def weight
-    (slots.sum {|it| it.weight}) + (bags.sum {|it| it.weight})
-  end
-
-  def jsonify
-    hash = as_json
-    hash.merge!({:weight => weight})
-    hash.merge!({:slots => slots.map {|it| it.jsonify}}) unless slots.nil?
-    hash.merge!({:bags => bags.map {|it| it.jsonify}}) unless bags.nil?
-    hash
+    items.sum {|it| it.total_weight}
   end
 end

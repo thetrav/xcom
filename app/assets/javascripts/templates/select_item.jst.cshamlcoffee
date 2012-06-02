@@ -1,0 +1,5 @@
+%li{"data-id":@baseItem.id}
+  =@baseItem.get("name")
+  .aliases{"style":"display:none"}
+    =@baseItem.get("name")
+    =@baseItem.get("aliases")

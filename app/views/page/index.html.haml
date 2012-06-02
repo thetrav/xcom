@@ -5,7 +5,15 @@
     .span2
       #left-menu
     .span10
-      .content#app
+      .content
+        %ul#player-tabs.nav.nav-tabs
+        #player-content.tab-content
+#dialog.modal.hide.fade
+  .modal-header
+    %button.close{"data-dismiss"=>"modal"} ×
+    %h3#dialog-title Select Item
+  .modal-body
+    %p Loading Items...
 
 :javascript
-  $(function() {window.Page.init()})
+  $(function() {Page.init()})

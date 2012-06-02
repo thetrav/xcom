@@ -1,6 +1,0 @@
-%h3 Select Item:
-- for item in @items
-  .item{"data-id": item.get("id")}
-    = item.get("name")
-.item{"data-id": ""}
-  Empty
