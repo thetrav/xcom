@@ -5,8 +5,7 @@ Page.Views.Index = Backbone.View.extend(
 
   render: () ->
     html = ""
-    for player in @players.models
-      html += JST["templates/player"].call(player: new Page.Models.Player(player))
+    html += JST["templates/players"].call(players : @players.models)
     $(@el).html(html)
     $('#app').html(@el)
     $('.item-picker').click((event) => @pickItem(event))

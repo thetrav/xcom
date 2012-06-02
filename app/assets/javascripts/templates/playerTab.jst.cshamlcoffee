@@ -1,0 +1,2 @@
+%a{'href':"#player#{@player.id}", "data-toggle":"tab"}
+  = @player.get("name")
