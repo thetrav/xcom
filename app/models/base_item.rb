@@ -1,5 +1,6 @@
 #items inside the base, not some technical meaning
 class BaseItem < ActiveRecord::Base
+
   attr_accessible :name, :space, :weight, :capacity, :quantity,
                   :aliases, :accepts, :goes_in
 

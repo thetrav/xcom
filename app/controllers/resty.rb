@@ -30,6 +30,6 @@ class Resty < ApplicationController
     end
 
     def param
-      clazzName.downcase.to_sym
+      clazzName.underscore.to_sym
     end
 end

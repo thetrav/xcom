@@ -14,6 +14,7 @@ Page.Views.AddItemDialog = Backbone.View.extend(
 
   loadItems: () ->
     baseItems = new Backbone.Collection
+    baseItems.model = Page.Models.BaseItem
     baseItems.url = @itemsUrl
     baseItems.fetch(
       success: () =>
@@ -32,7 +33,8 @@ Page.Views.AddItemDialog = Backbone.View.extend(
       list.append(JST["templates/select_item"].call(baseItem:baseItem))
     list.find("li").click((e) =>
       itemId = $(e.currentTarget).data("id")
-      @target.addItem(baseItems.get(itemId))
+      baseItem = baseItems.get(itemId)
+      @target.addItem(baseItem)
       $("#dialog").modal("hide")
     )
     Page.listFilter(body.find(".filter"), list)

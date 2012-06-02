@@ -6,7 +6,6 @@ Page.Models.Player = Backbone.Model.extend(
       base_item_id:baseItem.id,
       player_id:@id
     )
-    console.log("saving")
     item.save({},
       success:(model) =>
         @view.addItem(model)

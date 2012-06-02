@@ -1,4 +1,7 @@
 class Item < ActiveRecord::Base
+  before_create :subtract_inventory
+  before_destroy :return_to_inventory
+
   attr_accessible :base_item_id, :parent_item_id, :player_id
 
   belongs_to :base_item
@@ -20,5 +23,15 @@ class Item < ActiveRecord::Base
     total = weight
     total += items.sum {|it| it.total_weight}
     total
-    end
+  end
+
+  def subtract_inventory
+    base_item.quantity -= 1
+    base_item.save!
+  end
+
+  def return_to_inventory
+    base_item.quantity += 1
+    base_item.save!
+  end
 end

@@ -35,7 +35,7 @@ window.Page =
   listFilter:(input, list) ->
     input.change(() =>
       console.log("input changed")
-      filter = input.val()
+      filter = input.val().toLowerCase()
       list.find(".aliases:not(:contains('#{filter}'))").parent().slideUp()
       list.find(".aliases:contains('#{filter}')").parent().slideDown()
     )
