@@ -9,20 +9,8 @@
   %br/
   = submit_tag
 
-%h2 Items
-= form_tag ({:controller => :house_keeping, :action => :upload_items}), :multipart => true do
-  = file_field_tag :data
-  %br/
-  = submit_tag
-
-%h2 Slots
-= form_tag ({:controller => :house_keeping, :action => :upload_slots}), :multipart => true do
-  = file_field_tag :data
-  %br/
-  = submit_tag
-
-%h2 Bags
-= form_tag ({:controller => :house_keeping, :action => :upload_bags}), :multipart => true do
+%h2 Base Items
+= form_tag ({:controller => :house_keeping, :action => :upload_base_items}), :multipart => true do
   = file_field_tag :data
   %br/
   = submit_tag

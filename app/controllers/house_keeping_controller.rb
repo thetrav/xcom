@@ -7,6 +7,7 @@ class HouseKeepingController < ApplicationController
 
   def clear
     Item.all.each{|it| it.destroy}
+    BaseItem.all.each{|it| it.destroy}
     Player.all.each{|it| it.destroy }
 
     render :text => "success"
@@ -14,35 +15,32 @@ class HouseKeepingController < ApplicationController
 
   def upload_players
     process_file do |row|
-      player = Player.create(:name => row["Name"])
-
-      player.slots << Slot.new(:name => "Primary Weapon", :accepts => ["primary-weapon"])
-      player.slots << Slot.new(:name => "Side Arm", :accepts => ["side-arm"])
-      player.slots << Slot.new(:name => "Slung Weapon", :accepts => ["weapon"])
-      player.slots << Slot.new(:name => "Melee Weapon", :accepts => ["melee"])
-      player.slots << Slot.new(:name => "Melee Weapon", :accepts => ["melee"])
-      player.slots << Slot.new(:name => "Chest", :accepts => [])
-      player.slots << Slot.new(:name => "Belt", :accepts => ["belt"])
-      player.slots << Slot.new(:name => "Pack", :accepts => ["backpack"])
-
-      player.bags << Bag.create(:name => "Armour", :accepts => ["armour"])
-      player.save!
+      Player.create!(:name => row["Name"])
     end
     render :text => "success"
   end
 
-  def upload_items
+  def upload_base_items
     process_file do |row|
-      Item.create!(:name => row[:name],
-                   :space => row[:space],
-                   :weight => row[:weight],
-                   :aliases => row[:aliases].split(','))
+      BaseItem.create!( :name => row[:name],
+                        :space => row[:space],
+                        :weight => row[:weight],
+                        :capacity => row[:capacity],
+                        :quantity => row[:quantity],
+                        :aliases => split(row[:aliases]),
+                        :accepts => split(row[:accepts]),
+                        :goes_in => split(row[:goes_in]))
     end
 
     render :text => "success"
   end
 
   private
+
+  def split(data)
+    return nil if data.nil?
+    data.split(',')
+  end
 
   def process_file(&block)
     infile = params[:data].read

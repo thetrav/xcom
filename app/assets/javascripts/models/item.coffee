@@ -8,8 +8,12 @@ Page.Models.Item = Backbone.Model.extend(
       base_item_id:baseItem.id,
       parent_item_id:@id
     )
-    item.save()
-    @view.addItem(item)
+    item.save({},
+      success:(model) =>
+        @view.addItem(model)
+      error:(e) ->
+        Error.new("error saving item")
+    )
 )
 
 Page.Collections.Items = Backbone.Collection.extend(

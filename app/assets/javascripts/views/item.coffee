@@ -12,7 +12,7 @@ Page.Views.Item = Backbone.View.extend {
     @el.fadeIn()
     @bindEvents()
     for child in Page.items.where(parent_item_id : @item.id)
-      parent = @el.find("#item#{@item.id} > .items")
+      parent = @el.find("#item-#{@item.id}-items")
       child.view = new Page.Views.Item(parent:parent, item:child)
 
   bindEvents: () ->
@@ -26,6 +26,6 @@ Page.Views.Item = Backbone.View.extend {
     )
 
   addItem: (child) ->
-    parent = @el.find("#item#{@item.id} > .items")
+    parent = $("#item-#{@item.id}-items")
     child.view = new Page.Views.Item(parent:parent, item:child)
 }

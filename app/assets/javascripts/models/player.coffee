@@ -6,8 +6,13 @@ Page.Models.Player = Backbone.Model.extend(
       base_item_id:baseItem.id,
       player_id:@id
     )
-    item.save()
-    @view.addItem(item)
+    console.log("saving")
+    item.save({},
+      success:(model) =>
+        @view.addItem(model)
+      error: (e) ->
+        new Error("error saving item")
+    )
 )
 
 Page.Collections.Players = Backbone.Collection.extend(
