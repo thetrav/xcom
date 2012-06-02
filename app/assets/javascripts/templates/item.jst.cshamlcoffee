@@ -1,7 +1,13 @@
 .item-container{"id":"item-#{@item.id}-container"}
   %a{"href":"#", "data-toggle":"collapse", "data-target":"#item-#{@item.id}-collapse"} =@baseItem.get("name")
   .item.collapse{"id":"item-#{@item.id}-collapse"}
+    Weight: #{@item.weight()}
+    %br/
+    Space: #{@item.space()}
+    %br/
+    Capacity: #{@item.capacity()}
     .controls{"id":"item-#{@item.id}-controls"}
       %button.btn.addItem add item
       %button.btn.remove remove
+    Contents:
     .items{"id":"item-#{@item.id}-items"}
