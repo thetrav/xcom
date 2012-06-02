@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
   belongs_to :parent, :class_name => "Item", :foreign_key => "parent_item_id"
   belongs_to :player, :class_name => "Player", :foreign_key => "player_id"
 
-  has_many :items, :class_name => "Item", :foreign_key => "parent_item_id"
+  has_many :items, :class_name => "Item", :foreign_key => "parent_item_id", :dependent => :destroy
 
   delegate :weight, :to => :base_item
   delegate :name, :to => :base_item

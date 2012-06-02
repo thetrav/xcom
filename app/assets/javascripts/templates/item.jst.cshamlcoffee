@@ -1,6 +1,7 @@
-%a{"href":"#", "data-toggle":"collapse", "data-target":"#item#{@item.id}"} =@baseItem.get("name")
-.item.collapse{"id":"item#{@item.id}"}
-  .controls{"id":"item-#{@item.id}-controls"}
-    %button.btn.addItem add item
-    %button.btn.remove remove
-  .items{"id":"item-#{@item.id}-items"}
+.item-container{"id":"item-#{@item.id}-container"}
+  %a{"href":"#", "data-toggle":"collapse", "data-target":"#item#{@item.id}"} =@baseItem.get("name")
+  .item.collapse{"id":"item#{@item.id}"}
+    .controls{"id":"item-#{@item.id}-controls"}
+      %button.btn.addItem add item
+      %button.btn.remove remove
+    .items{"id":"item-#{@item.id}-items"}

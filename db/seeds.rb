@@ -102,3 +102,12 @@ BaseItem.create!(
     :space => 1,
     :quantity => 2
 )
+
+BaseItem.create!(
+    :name => "universal extender",
+    :goes_in => "all",
+    :accepts => "all",
+    :weight => 0.1,
+    :space => 1,
+    :quantity => 2
+)
