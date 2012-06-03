@@ -19,6 +19,8 @@ Page.Views.Player = Page.Views.Base.extend(
     @updateWeight()
 
   updateWeight:() ->
-    @field("weight").text(@model.weight())
+    @update("weight", @model.weight())
 
+  updateSpace:() ->
+    @update("space", @model.space())
 )

@@ -10,4 +10,7 @@ Page.Views.Base = Backbone.View.extend {
   field:(fieldName) -> @el.find(@field_id(fieldName))
 
   bindEl:() -> @el = $("##{@elId()}")
+
+
+  update:(field, value) -> @field(field).text(value)
 }

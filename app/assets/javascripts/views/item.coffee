@@ -25,6 +25,7 @@ Page.Views.Item = Page.Views.Base.extend {
         success:() =>
           @el.fadeOut()
           @updateWeight()
+          @updateSpace()
         error:(e) => new Error("error removing object")
       )
     )
@@ -32,8 +33,14 @@ Page.Views.Item = Page.Views.Base.extend {
   addItem: (child) ->
     child.view = new Page.Views.Item(parent:@field("items"), item:child)
     @updateWeight()
+    @updateSpace()
+
 
   updateWeight:() ->
-    @field("weight").text(@model.weight())
+    @update("weight", @model.weight())
     @model.parent().view.updateWeight()
+
+  updateSpace:() ->
+    @update("space", @model.space())
+    @model.parent().view.updateSpace()
 }

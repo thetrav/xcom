@@ -34,18 +34,19 @@ Page.Models.Item = Page.Models.Base.extend(
     Page.items.where(parent_item_id: @id)
 
   weight: () ->
-    @base("weight") + @childrenWeight().weight()
+    @base("weight") + @childrenWeight()
 
   childrenWeight:() ->
-    @children().reduce(
-      ((a,b) => weight: () => a.weight() + b.weight()),
-      weight:() -> 0)
+    @children().reduce(((x,c) -> x + c.weight()), 0)
 
   label: () ->
     @base("name")
 
   space: () ->
-    @base("space")
+    @base("space") + @childrenSpace()
+
+  childrenSpace:() ->
+    @children().reduce(((x,c) -> x + c.space()), 0)
 
   capacity: () ->
     @base("capacity")

@@ -19,9 +19,10 @@ Page.Models.Player = Page.Models.Base.extend(
     Page.items.where(player_id: @id)
 
   weight: () ->
-    @items().reduce(
-      ((a,b)-> weight:() -> a.weight() + b.weight()),
-      weight:() ->0).weight()
+    @items().reduce(((x,c) -> x + c.weight()), 0)
+
+  space: () ->
+    @items().reduce(((x,c) -> x + c.space()), 0)
 )
 
 Page.Collections.Players = Backbone.Collection.extend(
