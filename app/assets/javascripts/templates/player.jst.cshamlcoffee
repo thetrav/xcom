@@ -1,6 +1,6 @@
 .tab-pane{"id":"player#{@player.id}"}
   #{@player.get("name")} is carrying
-  %span.weight= @player.get("weight")
+  %span.weight{"id":"player-#{@player.id}-weight"}= @player.weight()
   kg of stuff
   .controls{"id":"player-#{@player.id}-controls"}
     %button.btn.addItem add item

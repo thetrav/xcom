@@ -13,6 +13,14 @@ Page.Models.Player = Backbone.Model.extend(
       error: (e) ->
         new Error("error saving item")
     )
+
+  items: () ->
+    Page.items.where(player_id: @id)
+
+  weight: () ->
+    @items().reduce(
+      ((a,b)-> weight:() -> a.weight() + b.weight()),
+      weight:() ->0).weight()
 )
 
 Page.Collections.Players = Backbone.Collection.extend(

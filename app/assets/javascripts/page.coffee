@@ -9,13 +9,14 @@ window.Page =
     Page.players = new Page.Collections.Players
     Page.players.fetch(
       success: () =>
-        @renderPlayers()
         Page.baseItems = new Page.Collections.BaseItems
         Page.baseItems.fetch(
           success: () =>
             Page.items = new Page.Collections.Items
             Page.items.fetch(
-              success: () => @renderItems()
+              success: () =>
+                @renderPlayers()
+                @renderItems()
               error: () -> new Error(message:"error loading items.")
             )
           error: () -> new Error(message:"error loading base items.")
