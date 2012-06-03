@@ -41,6 +41,12 @@ Page.Views.Item = Page.Views.Base.extend {
     @model.parent().view.updateWeight()
 
   updateSpace:() ->
-    @update("space", @model.space())
+    space = @model.space()
+    @update("space", space)
+    if(@model.space() > @model.capacity())
+      @field("space").addClass("over")
+    else
+      @field("space").removeClass("over")
+
     @model.parent().view.updateSpace()
 }
