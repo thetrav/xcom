@@ -23,5 +23,6 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require page
+//= require models/base_model
 
 //= require_tree .

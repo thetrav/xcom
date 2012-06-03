@@ -1,5 +1,6 @@
-Page.Models.Player = Backbone.Model.extend(
-  url: () -> Page.Helpers.url('items')
+Page.Models.Player = Page.Models.Base.extend(
+  initialize:() ->
+    @name = "player"
 
   addItem:(baseItem) ->
     item = new Page.Models.Item(

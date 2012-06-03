@@ -1,6 +1,6 @@
-Page.Models.Item = Backbone.Model.extend(
-  url: () ->
-    Page.Helpers.url(this, 'items')
+Page.Models.Item = Page.Models.Base.extend(
+  initialize:() ->
+    @name = 'item'
 
   addItem:(baseItem) ->
     console.log("adding item #{baseItem.id}")
