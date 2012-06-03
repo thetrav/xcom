@@ -16,4 +16,8 @@ Page.Views.Player = Backbone.View.extend(
   addItem: (item) ->
     parent = @el.find("#player#{@player.id}.items")
     item.view = new Page.Views.Item(parent:parent, item:item)
+
+  updateWeight:() ->
+    console.log "update weight"
+
 )

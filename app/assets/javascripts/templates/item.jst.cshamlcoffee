@@ -1,7 +1,8 @@
 .item-container{"id":"item-#{@item.id}-container"}
   %a{"href":"#", "data-toggle":"collapse", "data-target":"#item-#{@item.id}-collapse"} =@baseItem.get("name")
   .item.collapse{"id":"item-#{@item.id}-collapse"}
-    Weight: #{@item.weight()}
+    Weight:
+    %span{"id":"item-#{@item.id}-weight"} =@item.weight()
     %br/
     Space: #{@item.space()}
     %br/

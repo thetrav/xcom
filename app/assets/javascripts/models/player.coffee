@@ -8,6 +8,7 @@ Page.Models.Player = Backbone.Model.extend(
     )
     item.save({},
       success:(model) =>
+        Page.items.add(model)
         @view.addItem(model)
       error: (e) ->
         new Error("error saving item")

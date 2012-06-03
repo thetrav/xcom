@@ -20,7 +20,9 @@ Page.Views.Item = Backbone.View.extend {
     controls.find(".addItem").click((e) => new Page.Views.AddItemDialog(target:@item, itemsUrl:"/base_items_for_item/#{@item.id}"))
     controls.find(".remove").click((e) =>
       @item.destroy(
-        success:() => @el.fadeOut()
+        success:() =>
+          @el.fadeOut()
+          @updateWeight()
         error:(e) => new Error("error removing object")
       )
     )
@@ -28,4 +30,10 @@ Page.Views.Item = Backbone.View.extend {
   addItem: (child) ->
     parent = $("#item-#{@item.id}-items")
     child.view = new Page.Views.Item(parent:parent, item:child)
+    @updateWeight()
+
+  updateWeight:() ->
+    console.log("updating item weight to #{@item.weight()}")
+    @el.find("#item-#{@item.id}-weight").text(@item.weight())
+    @item.parent().view.updateWeight()
 }
