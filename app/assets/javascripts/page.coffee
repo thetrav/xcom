@@ -16,6 +16,7 @@ window.Page =
             Page.items.fetch(
               success: () =>
                 @renderPlayers()
+                $('ul.nav-tabs a:first').tab('show');
                 @renderItems()
               error: () -> new Error(message:"error loading items.")
             )

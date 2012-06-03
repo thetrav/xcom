@@ -1,7 +1,7 @@
-.tab-pane{"id":"player#{@player.id}"}
-  #{@player.get("name")} is carrying
-  %span.weight{"id":"player-#{@player.id}-weight"}= @player.weight()
+.tab-pane{"id":@view.elId()}
+  #{@model.get("name")} is carrying
+  %span.weight{"id":@view.fieldId("weight")}= @model.weight()
   kg of stuff
-  .controls{"id":"player-#{@player.id}-controls"}
+  .controls{"id":@view.fieldId("controls")}
     %button.btn.addItem add item
-  .items{"id":"player#{@player.id}"}
+  .items{"id":@view.fieldId("items")}

@@ -41,6 +41,8 @@ Page.Models.Item = Page.Models.Base.extend(
       ((a,b) => weight: () => a.weight() + b.weight()),
       weight:() -> 0)
 
+  label: () ->
+    @base("name")
 
   space: () ->
     @base("space")

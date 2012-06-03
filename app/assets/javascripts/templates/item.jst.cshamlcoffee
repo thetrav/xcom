@@ -1,14 +1,15 @@
-.item-container{"id":"item-#{@item.id}-container"}
-  %a{"href":"#", "data-toggle":"collapse", "data-target":"#item-#{@item.id}-collapse"} =@baseItem.get("name")
-  .item.collapse{"id":"item-#{@item.id}-collapse"}
-    Weight:
-    %span{"id":"item-#{@item.id}-weight"} =@item.weight()
-    %br/
-    Space: #{@item.space()}
-    %br/
-    Capacity: #{@item.capacity()}
-    .controls{"id":"item-#{@item.id}-controls"}
-      %button.btn.addItem add item
-      %button.btn.remove remove
-    Contents:
-    .items{"id":"item-#{@item.id}-items"}
+.item-container{"id":@view.elId()}
+  %a{"href":"#", "data-toggle":"collapse", "data-target":"#{@view.field_id("collapse")}"} =@model.label()
+  .item.collapse{"id":@view.fieldId("collapse")}
+      Weight:
+      %span{"id":@view.fieldId("weight")} = @model.weight()
+      %br/
+      Space:
+      %span{"id":@view.fieldId("space")} = @model.space()
+      %br/
+      Capacity: #{@model.capacity()}
+      .controls{"id":@view.fieldId("controls")}
+        %button.btn.addItem add item
+        %button.btn.remove remove
+      Contents:
+      .items{"id":@view.fieldId("items")}

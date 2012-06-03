@@ -1,24 +1,24 @@
-Page.Views.Player = Backbone.View.extend(
+Page.Views.Player = Page.Views.Base.extend(
   initialize: () ->
-    @player = @options.player
+    @model = @options.player
     @render()
 
   render:() ->
-    $('#player-tabs').append(JST["templates/player_tab"].call(player : @player))
-    @el = $('#player-content').append(JST["templates/player"].call(player : @player))
+    $('#player-tabs').append(JST["templates/player_tab"].call(model : @model, view:this))
+    $('#player-content').append(JST["templates/player"].call(model : @model, view:this))
+    @bindEl()
     @bindEvents()
-    $('ul.nav-tabs a:first').tab('show');
 
   bindEvents: () ->
-    @el.find("#player-#{@player.id}-controls .addItem").click( (e) =>
-      new Page.Views.AddItemDialog(target:@player, itemsUrl:'/base_items_for_player'))
+    @field("controls").find(".addItem").click( (e) =>
+      new Page.Views.AddItemDialog(target:@model, itemsUrl:'/base_items_for_player'))
 
   addItem: (item) ->
-    parent = @el.find("#player#{@player.id}.items")
+    parent = @field("items")
     item.view = new Page.Views.Item(parent:parent, item:item)
     @updateWeight()
 
   updateWeight:() ->
-    @el.find("#player-#{@player.id}-weight").text(@player.weight())
+    @field("weight").text(@model.weight())
 
 )

@@ -24,5 +24,6 @@
 //= require backbone_datalink
 //= require page
 //= require models/base_model
+//= require views/base_view
 
 //= require_tree .

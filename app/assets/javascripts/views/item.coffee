@@ -1,25 +1,27 @@
-Page.Views.Item = Backbone.View.extend {
+Page.Views.Item = Page.Views.Base.extend {
   initialize:() ->
     @parent = @options.parent
-    @item = @options.item
+    @model = @options.item
     @render()
 
   render:() ->
-    baseItem = Page.baseItems.get(@item.get("base_item_id"))
-    @parent.append(JST["templates/item"].call(item:@item, baseItem: baseItem))
-    @el = $("#item-#{@item.id}-container")
+    @parent.append(JST["templates/item"].call(model:@model, view:this))
+    @bindEl()
     @el.hide()
     @el.fadeIn()
     @bindEvents()
-    for child in Page.items.where(parent_item_id : @item.id)
-      parent = @el.find("#item-#{@item.id}-items")
-      child.view = new Page.Views.Item(parent:parent, item:child)
+    for child in Page.items.where(parent_item_id : @model.id)
+      child.view = new Page.Views.Item(parent:@field("items"), item:child)
 
   bindEvents: () ->
-    controls = @el.find("#item-#{@item.id}-controls").first()
-    controls.find(".addItem").click((e) => new Page.Views.AddItemDialog(target:@item, itemsUrl:"/base_items_for_item/#{@item.id}"))
+    controls = @field("controls").first()
+    controls.find(".addItem").click((e) =>
+      new Page.Views.AddItemDialog(
+        target:@model,
+        itemsUrl:"/base_items_for_item/#{@model.id}")
+    )
     controls.find(".remove").click((e) =>
-      @item.destroy(
+      @model.destroy(
         success:() =>
           @el.fadeOut()
           @updateWeight()
@@ -28,12 +30,10 @@ Page.Views.Item = Backbone.View.extend {
     )
 
   addItem: (child) ->
-    parent = $("#item-#{@item.id}-items")
-    child.view = new Page.Views.Item(parent:parent, item:child)
+    child.view = new Page.Views.Item(parent:@field("items"), item:child)
     @updateWeight()
 
   updateWeight:() ->
-    console.log("updating item weight to #{@item.weight()}")
-    @el.find("#item-#{@item.id}-weight").text(@item.weight())
-    @item.parent().view.updateWeight()
+    @field("weight").text(@model.weight())
+    @model.parent().view.updateWeight()
 }
