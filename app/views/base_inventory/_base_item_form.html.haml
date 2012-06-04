@@ -1,0 +1,32 @@
+.collapse.row-fluid{"id"=>"item-#{item.id}"}
+  =form_for(item) do |f|
+    .span12.item
+      .row-fluid
+        .span6
+          =f.label :name
+          =f.text_field :name
+          %br
+          =f.label :quantity
+          =f.text_field :quantity
+        .span6
+          =f.label :weight
+          =f.text_field :weight
+          %br
+          =f.label :space
+          =f.text_field :space
+          %br
+          =f.label :capacity
+          =f.text_field :capacity
+      .row-fluid
+        .span12
+          =f.label :aliases
+          =f.text_field :aliases
+          =f.label :accepts
+          =f.text_field :accepts
+          =f.label :goes_in
+          =f.text_field :goes_in
+          =f.label :mount_points
+          =f.text_field :mount_points
+      .row-fluid
+        .span12
+          =submit_tag

@@ -1,0 +1,19 @@
+.container-fluid
+  .row-fluid
+    .span12#error
+  .row-fluid
+    .span12.controls
+      %input
+      %a{"href"=>"#", "data-toggle"=>"collapse", "data-target"=>"#item-"} new
+      =render("base_item_form", {item:@baseItem})
+
+    - @baseItems.each do |item|
+      .row-fluid
+        .span12
+          %a{"href"=>"#", "data-toggle"=>"collapse", "data-target"=>"#item-#{item.id}"}= item.name
+          Quantity:
+          =item.quantity
+          %a{href:"#"} +
+          %a{href:"#"} -
+          =link_to "X", base_item_path(item.id), :method => :delete, :class => "delete", :confirm => "Are you sure ?"
+      =render("base_item_form", {item:item})

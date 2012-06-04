@@ -8,6 +8,10 @@ class Resty < ApplicationController
     render :json => it
   end
 
+  def new
+    render :json => clazz.new
+  end
+
   def create
     render :json => clazz.create!(params[param])
   end

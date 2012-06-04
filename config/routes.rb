@@ -10,6 +10,8 @@ Xcom::Application.routes.draw do
   match "/housekeeping/upload_players" => "house_keeping#upload_players"
   match "/housekeeping/upload_base_items" => "house_keeping#upload_base_items"
 
+  match "/base" => "base_inventory#index"
+
   root :to => 'page#index'
 
 end
