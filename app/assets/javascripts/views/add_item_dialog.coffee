@@ -1,6 +1,7 @@
 Page.Views.AddItemDialog = Backbone.View.extend(
   initialize: () ->
     @target = @options.target
+    @mountPoint = @options.mountPoint
     @itemsUrl = @options.itemsUrl
     @render()
 
@@ -34,7 +35,7 @@ Page.Views.AddItemDialog = Backbone.View.extend(
     list.find("li").click((e) =>
       itemId = $(e.currentTarget).data("id")
       baseItem = baseItems.get(itemId)
-      @target.addItem(baseItem)
+      @target.addItem(baseItem, @mountPoint)
       $("#dialog").modal("hide")
     )
     Page.listFilter(body.find(".filter"), list)

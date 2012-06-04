@@ -1,5 +1,7 @@
 class Player < ActiveRecord::Base
-  attr_accessible :id, :name, :item_ids, :updated_at, :created_at
+  attr_accessible :id, :name, :mount_points, :item_ids, :updated_at, :created_at
+
+  serialize :mount_points
 
   has_many :items, :class_name => "Item", :foreign_key => "player_id"
 

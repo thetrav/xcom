@@ -2,10 +2,11 @@ Page.Models.Player = Page.Models.Base.extend(
   initialize:() ->
     @name = "player"
 
-  addItem:(baseItem) ->
+  addItem:(baseItem, mountPoint) ->
     item = new Page.Models.Item(
       base_item_id:baseItem.id,
-      player_id:@id
+      player_id:@id,
+      mount_point:mountPoint
     )
     item.save({},
       success:(model) =>

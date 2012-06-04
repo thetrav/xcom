@@ -2,11 +2,12 @@
 class BaseItem < ActiveRecord::Base
 
   attr_accessible :name, :space, :weight, :capacity, :quantity,
-                  :aliases, :accepts, :goes_in
+                  :aliases, :accepts, :goes_in, :mount_points
 
   serialize :aliases
   serialize :accepts
   serialize :goes_in
+  serialize :mount_points
 
   def for_player?
     return false if goes_in.nil?

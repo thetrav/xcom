@@ -2,7 +2,7 @@ class Item < ActiveRecord::Base
   before_create :subtract_inventory
   before_destroy :return_to_inventory
 
-  attr_accessible :base_item_id, :parent_item_id, :player_id
+  attr_accessible :base_item_id, :parent_item_id, :player_id, :mount_point
 
   belongs_to :base_item
 
@@ -18,6 +18,7 @@ class Item < ActiveRecord::Base
   delegate :accepts, :to => :base_item
   delegate :aliases, :to => :base_item
   delegate :goes_in, :to => :base_item
+  delegate :mount_points, :to => :base_item
 
   def total_weight
     total = weight

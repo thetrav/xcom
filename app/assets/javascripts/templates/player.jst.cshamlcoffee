@@ -2,6 +2,15 @@
   #{@model.get("name")} is carrying
   %span.weight{"id":@view.fieldId("weight")}= @model.weight()
   kg of stuff
-  .controls{"id":@view.fieldId("controls")}
-    %button.btn.addItem add item
-  .items{"id":@view.fieldId("items")}
+  .mount-points.container-fluid
+    .row-fluid
+      .span6
+        !=JST["templates/mount_point"].call(label:"primary weapon", point:"primary-weapon", view:@view)
+        !=JST["templates/mount_point"].call(label:"side arm", point:"side-arm", view:@view)
+        !=JST["templates/mount_point"].call(label:"slung weapon", point:"slung-weapon", view:@view)
+        !=JST["templates/mount_point"].call(label:"melee", point:"melee", view:@view)
+      .span6
+        !=JST["templates/mount_point"].call(label:"armour", point:"armour", view:@view)
+        !=JST["templates/mount_point"].call(label:"chest", point:"chest", view:@view)
+        !=JST["templates/mount_point"].call(label:"belt", point:"belt", view:@view)
+        !=JST["templates/mount_point"].call(label:"pack", point:"backpack", view:@view)

@@ -10,11 +10,13 @@ Page.Views.Player = Page.Views.Base.extend(
     @bindEvents()
 
   bindEvents: () ->
-    @field("controls").find(".addItem").click( (e) =>
-      new Page.Views.AddItemDialog(target:@model, itemsUrl:'/base_items_for_player'))
+    @el.find(".addItem").click( (e) =>
+      new Page.Views.AddItemDialog(target:@model,
+      itemsUrl:'/base_items_for_player',
+      mountPoint: $(e.currentTarget).data("mount-point")))
 
   addItem: (item) ->
-    parent = @field("items")
+    parent = @el.find("#{@field_id(item.get("mount_point"))} > .items")
     item.view = new Page.Views.Item(parent:parent, item:item)
     @updateWeight()
 

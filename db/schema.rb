@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120526023220) do
     t.float   "capacity"
     t.text    "accepts"
     t.text    "goes_in"
+    t.text    "mount_points"
     t.integer "quantity"
   end
 
@@ -28,12 +29,14 @@ ActiveRecord::Schema.define(:version => 20120526023220) do
     t.integer "base_item_id"
     t.integer "parent_item_id"
     t.integer "player_id"
+    t.string  "mount_point"
   end
 
   create_table "players", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "mount_points"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end
