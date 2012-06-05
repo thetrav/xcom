@@ -1,5 +1,6 @@
 .item-container{"id":@view.elId()}
   %a{"href":"#", "data-toggle":"collapse", "data-target":"#{@view.field_id("collapse")}"} =@model.label()
+  %a.button.remove{"href":"#", "id":@view.fieldId("remove-button")} -
   .item.collapse{"id":@view.fieldId("collapse")}
       Weight:
       %span{"id":@view.fieldId("weight")} = @model.weight()
@@ -8,8 +9,7 @@
       %span{"id":@view.fieldId("space")} = @model.space()
       %br/
       Capacity: #{@model.capacity()}
-      .controls{"id":@view.fieldId("controls")}
-        %button.btn.addItem add item
-        %button.btn.remove remove
+      %br/
       Contents:
+      %a.button.addItem{"href":"#", "id":@view.fieldId("add-button")} +
       .items{"id":@view.fieldId("items")}

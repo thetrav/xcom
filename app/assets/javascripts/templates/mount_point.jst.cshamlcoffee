@@ -1,5 +1,4 @@
 .mount-point{"id":@view.fieldId(@point)}
-  =@label
-  .controls
-    %button.btn.addItem{"data-mount-point":@point} add item
+  %h4=@label
+  %a.button.addItem{href:"#", "data-mount-point":@point} +
   .items

@@ -14,13 +14,12 @@ Page.Views.Item = Page.Views.Base.extend {
       child.view = new Page.Views.Item(parent:@field("items"), item:child)
 
   bindEvents: () ->
-    controls = @field("controls").first()
-    controls.find(".addItem").click((e) =>
+    @field("add-button").click((e) =>
       new Page.Views.AddItemDialog(
         target:@model,
         itemsUrl:"/base_items_for_item/#{@model.id}")
     )
-    controls.find(".remove").click((e) =>
+    @field("remove-button").click((e) =>
       @model.destroy(
         success:() =>
           @el.fadeOut()
