@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(:version => 20120526023220) do
     t.string  "mount_point"
   end
 
+  create_table "loadouts", :force => true do |t|
+    t.integer "player_id"
+    t.text    "loadout"
+  end
+
   create_table "players", :force => true do |t|
     t.string   "name"
     t.text     "mount_points"

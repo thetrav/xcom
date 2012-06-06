@@ -28,6 +28,11 @@ class CreateTables < ActiveRecord::Migration
       t.integer :player_id
       t.string :mount_point
     end
+
+    create_table :loadouts do |t|
+      t.integer :player_id
+      t.text :loadout
+    end
   end
 
   def down
