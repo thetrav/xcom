@@ -18,12 +18,26 @@ window.Page =
                 @renderPlayers()
                 $('ul.nav-tabs a:first').tab('show');
                 @renderItems()
+                @loadLoadouts()
               error: () -> new Error(message:"error loading items.")
             )
           error: () -> new Error(message:"error loading base items.")
         )
       error: () -> new Error(message:"error loading players.")
     )
+
+  loadLoadouts: () ->
+    Page.loadouts = new Page.Collections.Loadouts
+    Page.loadouts.fetch(
+      success: () =>
+        @renderLoadouts()
+      error: () -> new Error(message:"error loading loadouts")
+    )
+
+  renderLoadouts: () ->
+    for loadout in Page.loadouts.models
+      player = Page.players.get(loadout.get("player_id"))
+      player.view.addLoadout(loadout)
 
   renderPlayers: () ->
     for player in Page.players.models

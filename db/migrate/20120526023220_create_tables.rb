@@ -31,6 +31,7 @@ class CreateTables < ActiveRecord::Migration
 
     create_table :loadouts do |t|
       t.integer :player_id
+      t.string :name
       t.text :loadout
     end
   end

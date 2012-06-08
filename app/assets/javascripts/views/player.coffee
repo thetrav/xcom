@@ -14,12 +14,25 @@ Page.Views.Player = Page.Views.Base.extend(
       new Page.Views.AddItemDialog(target:@model,
       itemsUrl:'/base_items_for_player',
       mountPoint: $(e.currentTarget).data("mount-point")))
-    @field("save-loadout").click( (e) =>
-      model = new Page.Models.Loadout(player_id: @model.id)
-      model.save({},
-        success: (e) -> console.log("success")
-        error: (e) -> new Error("error saving loadout")
-      )
+    @field("save-loadout").click( (e) => @saveLoadoutDialog())
+
+  saveLoadoutDialog:() ->
+    dialog = $("#dialog")
+    dialog.find("#dialog-title").text("Name Loadout")
+    body = dialog.find(".modal-body")
+    body.html("<input id='loadout-name'/><div class='btn btn-primary' id='save-loadout-buton'>save</div>")
+    body.find("#save-loadout-buton").click((e)=>
+      console.log("clicked")
+      @saveLoadout(body.find("#loadout-name").val())
+      dialog.modal("hide")
+    )
+    dialog.modal('show')
+
+  saveLoadout:(name) ->
+    model = new Page.Models.Loadout(name: name, player_id: @model.id)
+    model.save({},
+      success: (e) -> addLoadout(e)
+      error: (e) -> new Error("error saving loadout")
     )
 
   addItem: (item) ->
@@ -32,4 +45,7 @@ Page.Views.Player = Page.Views.Base.extend(
 
   updateSpace:() ->
     @update("space", @model.space())
+
+  addLoadout:(loadout) ->
+    @field("loadouts").append("<li href='#' data-id='#{loadout.id }'>#{loadout.get("name")}</li>")
 )

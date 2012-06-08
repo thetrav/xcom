@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20120526023220) do
 
   create_table "loadouts", :force => true do |t|
     t.integer "player_id"
+    t.string  "name"
     t.text    "loadout"
   end
 
