@@ -26,6 +26,7 @@ Page.Views.Player = Page.Views.Base.extend(
       @saveLoadout(body.find("#loadout-name").val())
       dialog.modal("hide")
     )
+    dialog.on('shown', ()->$('#loadout-name').focus())
     dialog.modal('show')
 
   saveLoadout:(name) ->

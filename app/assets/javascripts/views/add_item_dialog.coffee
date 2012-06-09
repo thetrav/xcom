@@ -9,7 +9,8 @@ Page.Views.AddItemDialog = Backbone.View.extend(
     dialog = $("#dialog")
     dialog.find("#dialog-title").text("Select Item")
     body = dialog.find(".modal-body")
-    body.html("<p>Loading Items...</p>")
+    body.html('<input class="filter" id="filter-field" type="text"/><ul class="items"></ul>')
+    dialog.on('shown', () -> $('#filter-field').focus())
     dialog.modal('show')
     @loadItems()
 
@@ -27,7 +28,6 @@ Page.Views.AddItemDialog = Backbone.View.extend(
 
   itemsLoaded:(baseItems) ->
     body = $("#dialog .modal-body")
-    body.html('<input class="filter" id="filter-field" type="text"/><ul class="items"></ul>')
 
     list = body.find(".items")
     for baseItem in baseItems.models
