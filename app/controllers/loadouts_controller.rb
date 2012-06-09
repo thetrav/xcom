@@ -1,31 +1,20 @@
 class LoadoutsController < Resty
   def create
     player = Player.find(params[:loadout][:player_id])
-    load = Loadout.new(:player_id => player.id, :name => params[:loadout][:name])
+    load = Loadout.find_by_name(params[:loadout][:name])
+    load = Loadout.new(:player_id => player.id, :name => params[:loadout][:name]) if load.nil?
 
-    load.loadout= copy(player.items)
-
+    load.loadout = load.store_items(player.items)
     load.save!
 
     render :json => load
   end
 
   def apply
-    load = Loadout.find(params[:id])
-    player = load.player
-    player.items.each {|it| it.destroy}
-    load.items.each {|it| player.items << it}
-    player.save!
-    redirect_to :controller => :page_controller, :action => :index
+    Loadout.find(params[:id]).apply
+    redirect_to :controller => :page, :action => :index
   end
 
   private
 
-  def copy(itemList)
-    itemList.map do |item|
-      item_copy = item.dup
-      item_copy.items = copy(item.items)
-      item_copy
-    end
-  end
 end

@@ -47,5 +47,5 @@ Page.Views.Player = Page.Views.Base.extend(
     @update("space", @model.space())
 
   addLoadout:(loadout) ->
-    @field("loadouts").append("<li href='#' data-id='#{loadout.id }'>#{loadout.get("name")}</li>")
+    @field("loadouts").append("<li data-id='#{loadout.id }'><a href='player/#{@model.id}/loadout/#{loadout.id}'> #{loadout.get("name")}</a></li>")
 )

@@ -2,5 +2,6 @@
   %a.dropdown-toggle{"data-toggle":"dropdown", "data-target":@view.fieldId("loadouts")} loadouts
   %b.caret
   %ul.dropdown-menu{"id":@view.fieldId("loadouts")}
-    %li{"href" : "#", "id":@view.fieldId("save-loadout") } Save Current
+    %li
+       %a{"href" : "#", "id":@view.fieldId("save-loadout") } Save Current
     %li.divider

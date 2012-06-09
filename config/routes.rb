@@ -2,6 +2,8 @@ Xcom::Application.routes.draw do
 
   resources :items, :players, :base_items, :loadouts
 
+  match "/player/:player_id/loadout/:id" => "loadouts#apply"
+
   match "/base_items_for_player" => "base_items#for_player"
   match "/base_items_for_item/:item" => "base_items#for_item"
 
