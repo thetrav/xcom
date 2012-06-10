@@ -32,7 +32,7 @@ class HouseKeepingController < ApplicationController
 
   def un_munge!(hash, keys)
     keys.each do |key|
-      hash[key] = split(hash[key])
+      hash[key] = split(hash[key]).map{|it|it.strip.downcase}
     end
     hash
   end
