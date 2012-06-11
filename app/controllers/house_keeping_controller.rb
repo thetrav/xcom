@@ -15,14 +15,21 @@ class HouseKeepingController < ApplicationController
 
   def upload_players
     process_file do |row|
-      Player.create!(un_munge!(row, [:mount_points]).symbolize_keys)
+      player = Player.find_by_name(row[:name])
+      player ||= Player.new
+      un_munge!(row, [:mount_points])
+      player.update_attributes!(pick(row, [:name, :mount_points]))
     end
     render :text => "success"
   end
 
   def upload_base_items
     process_file do |row|
-      BaseItem.create!(un_munge!(row, [:aliases, :accepts, :goes_in, :mount_points]).symbolize_keys)
+      item = BaseItem.find_by_name(row[:name])
+      item ||= BaseItem.new
+      un_munge!(row, [:aliases, :accepts, :goes_in, :mount_points])
+      item.update_attributes!(pick(row, [ :name, :space, :weight, :capacity, :quantity,
+                                           :aliases, :accepts, :goes_in, :mount_points]))
     end
 
     render :text => "success"
@@ -30,9 +37,15 @@ class HouseKeepingController < ApplicationController
 
   private
 
+  def pick(hash, keys)
+    hash.reject do |k,_|
+      keys.include? k
+    end
+  end
+
   def un_munge!(hash, keys)
     keys.each do |key|
-      hash[key] = split(hash[key]).map{|it|it.strip.downcase}
+      hash[key] = split(hash[key]).map{|it|it.strip.downcase} unless hash[key].nil?
     end
     hash
   end
