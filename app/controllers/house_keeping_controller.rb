@@ -15,6 +15,7 @@ class HouseKeepingController < ApplicationController
 
   def upload_players
     process_file do |row|
+      row[:name] = row[:name].capitalize
       player = Player.find_by_name(row[:name])
       player ||= Player.new
       un_munge!(row, [:mount_points])
@@ -25,6 +26,7 @@ class HouseKeepingController < ApplicationController
 
   def upload_base_items
     process_file do |row|
+      row[:name] = row[:name].capitalize
       item = BaseItem.find_by_name(row[:name])
       item ||= BaseItem.new
       un_munge!(row, [:aliases, :accepts, :goes_in, :mount_points])
@@ -45,7 +47,7 @@ class HouseKeepingController < ApplicationController
 
   def un_munge!(hash, keys)
     keys.each do |key|
-      hash[key] = split(hash[key]).map{|it|it.strip.downcase} unless hash[key].nil?
+      hash[key] = split(hash[key]).map{|it|it.strip.capitalize} unless hash[key].nil?
     end
     hash
   end
