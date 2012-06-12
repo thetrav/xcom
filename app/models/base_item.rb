@@ -15,11 +15,11 @@ class BaseItem < ActiveRecord::Base
   end
 
   def for_item?(item)
-    if !goes_in.nil?
+    if !goes_in.blank?
       return true if goes_in == "all" || goes_in.include?(item.name)
       return true if in_both_lists(item.aliases, goes_in)
     end
-    return false if item.accepts.nil?
+    return false if item.accepts.blank?
     return true if item.accepts.include?("all") || item.accepts.include?(name)
     return true if in_both_lists(item.accepts, aliases)
     false
@@ -28,7 +28,7 @@ class BaseItem < ActiveRecord::Base
   private
 
   def in_both_lists(a, b)
-    return false if a.nil? || b.nil?
+    return false if a.blank? || b.blank?
     match = false
     a.each {|it| match ||= b.include?(it)}
     match
