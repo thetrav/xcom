@@ -1,5 +1,6 @@
 #items inside the base, not some technical meaning
 class BaseItem < ActiveRecord::Base
+  before_destroy :destroy_items
 
   attr_accessible :name, :space, :weight, :capacity, :quantity,
                   :aliases, :accepts, :goes_in, :mount_points
@@ -26,6 +27,10 @@ class BaseItem < ActiveRecord::Base
   end
 
   private
+
+  def destroy_items
+    Item.find_all_by_base_item_id(id).each{|it|it.destroy}
+  end
 
   def in_both_lists(a, b)
     return false if a.blank? || b.blank?
