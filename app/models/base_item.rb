@@ -12,7 +12,7 @@ class BaseItem < ActiveRecord::Base
 
   def for_player?
     return false if goes_in.nil?
-    goes_in.include?("player")
+    goes_in.include?("Player")
   end
 
   def for_item?(item)
