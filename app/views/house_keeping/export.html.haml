@@ -1,0 +1,10 @@
+%table
+  %tr
+    %th player
+    %th mountpoint
+    %th item
+    %th parent_item_name
+  - @players.each do |player|
+    - player.items.each do |item|
+      !=render :partial =>"items", :locals => {:player => player, :item => item}
+

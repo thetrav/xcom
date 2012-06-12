@@ -1,3 +1,6 @@
+%h1 export
+=link_to "export", :controller => :house_keeping, :action => :export
+
 %h1 Clear all data
 = form_tag ({:controller => :house_keeping, :action => :clear}) do
   = submit_tag

@@ -5,6 +5,10 @@ class HouseKeepingController < ApplicationController
 
   end
 
+  def export
+    @players = Player.all
+  end
+
   def clear
     Item.all.each{|it| it.destroy}
     BaseItem.all.each{|it| it.destroy}

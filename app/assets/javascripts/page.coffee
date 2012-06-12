@@ -37,7 +37,10 @@ window.Page =
   renderLoadouts: () ->
     for loadout in Page.loadouts.models
       player = Page.players.get(loadout.get("player_id"))
-      player.view.addLoadout(loadout)
+      if(player)
+        player.view.addLoadout(loadout)
+#      else
+#        debugger
 
   renderPlayers: () ->
     for player in Page.players.models
