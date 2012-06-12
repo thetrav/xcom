@@ -10,7 +10,7 @@ class HouseKeepingController < ApplicationController
     BaseItem.all.each{|it| it.destroy}
     Player.all.each{|it| it.destroy }
 
-    render :text => "success"
+    render :text => "success!"
   end
 
   def upload_players
@@ -21,7 +21,7 @@ class HouseKeepingController < ApplicationController
       un_munge!(row, [:mount_points])
       player.update_attributes!(pick(row, [:name, :mount_points]))
     end
-    render :text => "success"
+    render :text => "success!"
   end
 
   def upload_base_items
@@ -34,7 +34,7 @@ class HouseKeepingController < ApplicationController
                                            :aliases, :accepts, :goes_in, :mount_points]))
     end
 
-    render :text => "success"
+    render :text => "success!"
   end
 
   private
