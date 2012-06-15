@@ -10,9 +10,9 @@ class BaseItem < ActiveRecord::Base
   serialize :goes_in
   serialize :mount_points
 
-  def for_player?
+  def for_player?(mountpoint)
     return false if goes_in.nil?
-    goes_in.include?("Player")
+    goes_in.include?(mountpoint)
   end
 
   def for_item?(item)

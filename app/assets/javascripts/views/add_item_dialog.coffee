@@ -1,8 +1,13 @@
 Page.Views.AddItemDialog = Backbone.View.extend(
+  target: null
+  mountPoint:null
+  itemsUrl:null
+
   initialize: () ->
-    @target = @options.target
-    @mountPoint = @options.mountPoint
-    @itemsUrl = @options.itemsUrl
+    _.extend(this, @options)
+#    @target = @options.target
+#    @mountPoint = @options.mountPoint
+#    @itemsUrl = @options.itemsUrl
     @render()
 
   render:() ->

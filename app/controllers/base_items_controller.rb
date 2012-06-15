@@ -1,6 +1,6 @@
 class BaseItemsController < Resty
   def for_player
-    items = BaseItem.all.reject {|it| !it.for_player?}
+    items = BaseItem.all.reject {|it| !it.for_player?(params[:mountpoint])}
     render :json => items
   end
 

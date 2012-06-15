@@ -6,12 +6,12 @@
   .mount-points.container-fluid
     .row-fluid
       .span6
-        !=JST["templates/mount_point"].call(label:"primary weapon", point:"primary-weapon", view:@view)
-        !=JST["templates/mount_point"].call(label:"side arm", point:"side-arm", view:@view)
-        !=JST["templates/mount_point"].call(label:"slung weapon", point:"slung-weapon", view:@view)
-        !=JST["templates/mount_point"].call(label:"melee", point:"melee", view:@view)
+        !=JST["templates/mount_point"].call(label:"primary weapon", point:"Primary-weapon", view:@view)
+        !=JST["templates/mount_point"].call(label:"side arm", point:"Side-arm", view:@view)
+        !=JST["templates/mount_point"].call(label:"slung weapon", point:"Slung-weapon", view:@view)
+        !=JST["templates/mount_point"].call(label:"melee", point:"Melee", view:@view)
       .span6
-        !=JST["templates/mount_point"].call(label:"armour", point:"armour", view:@view)
-        !=JST["templates/mount_point"].call(label:"chest", point:"chest", view:@view)
-        !=JST["templates/mount_point"].call(label:"belt", point:"belt", view:@view)
-        !=JST["templates/mount_point"].call(label:"pack", point:"backpack", view:@view)
+        !=JST["templates/mount_point"].call(label:"armour", point:"Armour", view:@view)
+        !=JST["templates/mount_point"].call(label:"chest", point:"Chest", view:@view)
+        !=JST["templates/mount_point"].call(label:"belt", point:"Belt", view:@view)
+        !=JST["templates/mount_point"].call(label:"pack", point:"Backpack", view:@view)

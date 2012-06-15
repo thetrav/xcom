@@ -11,9 +11,12 @@ Page.Views.Player = Page.Views.Base.extend(
 
   bindEvents: () ->
     @el.find(".addItem").click( (e) =>
-      new Page.Views.AddItemDialog(target:@model,
-      itemsUrl:'/base_items_for_player',
-      mountPoint: $(e.currentTarget).data("mount-point")))
+      mountpoint = $(e.currentTarget).data("mount-point")
+      new Page.Views.AddItemDialog(
+        target: @model,
+        itemsUrl: "/base_items_for_player?mountpoint=#{mountpoint}",
+        mountPoint: mountpoint)
+    )
     @field("save-loadout").click( (e) => @saveLoadoutDialog())
 
   saveLoadoutDialog:() ->
@@ -22,7 +25,6 @@ Page.Views.Player = Page.Views.Base.extend(
     body = dialog.find(".modal-body")
     body.html("<input id='loadout-name'/><div class='btn btn-primary' id='save-loadout-buton'>save</div>")
     body.find("#save-loadout-buton").click((e)=>
-      console.log("clicked")
       @saveLoadout(body.find("#loadout-name").val())
       dialog.modal("hide")
     )
