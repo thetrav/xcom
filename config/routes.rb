@@ -1,5 +1,9 @@
 Xcom::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  match "/players/sign_up" => 'page#index'
+
   devise_for :players
 
   resources :items, :players, :base_items, :loadouts

@@ -53,3 +53,4 @@ gem "awesome_print"
 gem "rails-backbone"
 
 gem 'devise'
+gem 'rails_admin'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120616040310) do
+ActiveRecord::Schema.define(:version => 20120616041440) do
 
   create_table "base_items", :force => true do |t|
     t.string  "name"
@@ -60,5 +60,18 @@ ActiveRecord::Schema.define(:version => 20120616040310) do
 
   add_index "players", ["email"], :name => "index_players_on_email", :unique => true
   add_index "players", ["reset_password_token"], :name => "index_players_on_reset_password_token", :unique => true
+
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 5
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
 end
