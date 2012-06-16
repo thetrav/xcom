@@ -51,3 +51,5 @@ gem "js-routes"
 
 gem "awesome_print"
 gem "rails-backbone"
+
+gem 'devise'

@@ -1,5 +1,7 @@
 Xcom::Application.routes.draw do
 
+  devise_for :players
+
   resources :items, :players, :base_items, :loadouts
 
   match "/player/:player_id/loadout/:id" => "loadouts#apply"

@@ -1,4 +1,5 @@
 class Resty < ApplicationController
+  before_filter :authenticate_player!
 
   def update
     it = clazz.find(params[:id])

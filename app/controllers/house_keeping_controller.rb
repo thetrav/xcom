@@ -1,6 +1,8 @@
 require 'csv'
 
 class HouseKeepingController < ApplicationController
+  before_filter :authenticate_player!
+
   def index
 
   end
