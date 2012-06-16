@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Player.create(:name => "Travis", :email => "the.trav@gmail.com", :password => "Tester1@")
+Player.create(:name => "Phil", :email => "duke.herb@gmail.com", :password => "Tester1@")
