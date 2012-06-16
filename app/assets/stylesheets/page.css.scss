@@ -40,3 +40,12 @@ a.button {
 a.button:hover {
 	background-color: #aaa;
 }
+
+.encumbrance {
+  table, th, td {
+    border: 1px solid black;
+  }
+  tr.current {
+    background-color: #FF8888;
+  }
+}

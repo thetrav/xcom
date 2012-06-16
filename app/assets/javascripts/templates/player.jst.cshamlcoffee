@@ -1,8 +1,6 @@
 .tab-pane{"id":@view.elId()}
   != JST["templates/loadout"].call(model:@model, view:@view)
-  #{@model.get("name")} is carrying
-  %span.weight{"id":@view.fieldId("weight")}= @model.weight()
-  kg of stuff
+  != JST["templates/encumbrance"].call(model:@model, view:@view)
   .mount-points.container-fluid
     .row-fluid
       .span6

@@ -1,0 +1,12 @@
+
+%table.encumbrance
+  %tr
+    %th weight
+    %th limit
+    %th move
+    %th dodge
+  != JST["templates/encumbrance_level"].call(model:@model, view:@view, level:'None',       limit:1,  move:1.0,dodge:0)
+  != JST["templates/encumbrance_level"].call(model:@model, view:@view, level:'Light',      limit:2,  move:0.8,dodge:1)
+  != JST["templates/encumbrance_level"].call(model:@model, view:@view, level:'Medium',     limit:3,  move:0.6,dodge:2)
+  != JST["templates/encumbrance_level"].call(model:@model, view:@view, level:'Heavy',      limit:6,  move:0.4,dodge:3)
+  != JST["templates/encumbrance_level"].call(model:@model, view:@view, level:'Extra-Heavy',limit:10, move:0.2,dodge:4)

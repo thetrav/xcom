@@ -44,7 +44,28 @@ Page.Views.Player = Page.Views.Base.extend(
     @updateWeight()
 
   updateWeight:() ->
-    @update("weight", @model.weight())
+    weight = @model.weight()
+    @update("weight", weight)
+    tableRows = @el.find('.encumbrance tr')
+    tableRows.removeClass('current')
+    tableRows.find("td.weight").text("")
+    level = @encumbranceLevel(weight)
+    row = @field("encumbrance-#{level}")
+    row.addClass("current")
+    row.find("td.weight").text(weight)
+
+  encumbranceLevel: (weight) ->
+    basic_lift = @model.get("basic_lift")
+    if weight < basic_lift
+      "None"
+    else if weight < basic_lift*2
+      "Light"
+    else if weight < basic_lift*3
+      "Medium"
+    else if weight < basic_lift*6
+      "Heavy"
+    else
+      "Extra-Heavy"
 
   updateSpace:() ->
     @update("space", @model.space())
