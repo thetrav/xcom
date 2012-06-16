@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120616041440) do
+ActiveRecord::Schema.define(:version => 20120616122248) do
 
   create_table "base_items", :force => true do |t|
     t.string  "name"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20120616041440) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "playing"
   end
 
   add_index "players", ["email"], :name => "index_players_on_email", :unique => true
