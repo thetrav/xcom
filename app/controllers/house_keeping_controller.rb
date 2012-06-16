@@ -14,7 +14,6 @@ class HouseKeepingController < ApplicationController
   def clear
     Item.all.each{|it| it.destroy}
     BaseItem.all.each{|it| it.destroy}
-    Player.all.each{|it| it.destroy }
 
     render :text => "success!"
   end
