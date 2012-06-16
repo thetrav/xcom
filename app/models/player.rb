@@ -6,7 +6,7 @@ class Player < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :id, :name, :playing, :mount_points, :basic_lift, :basic_move, :dodge, :item_ids, :loadout_ids, :updated_at, :created_at
+  attr_accessible :id, :playing, :name, :mount_points, :basic_lift, :basic_move, :dodge, :item_ids, :loadout_ids, :updated_at, :created_at
 
   serialize :mount_points
 
