@@ -2,6 +2,7 @@
   %td=player.name
   %td=item.mount_point
   %td=item.name
+  %td=item.cs_type
   %td=item.parent.try(:name)
 -item.items.each do |child|
   !=render :partial =>"items", :locals => {:player => player, :item => child}
