@@ -8,7 +8,7 @@ class Player < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :id, :playing, :name, :mount_points, :basic_lift, :basic_move, :dodge, :item_ids, :loadout_ids, :updated_at, :created_at
 
-  serialize :mount_points
+  serialize :mount_points, JSON
 
   has_many :items, :class_name => "Item", :foreign_key => "player_id", :autosave => true
   has_many :loadouts

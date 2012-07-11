@@ -5,10 +5,10 @@ class BaseItem < ActiveRecord::Base
   attr_accessible :name, :space, :weight, :capacity, :quantity,
                   :aliases, :accepts, :goes_in, :mount_points, :cs_type
 
-  serialize :aliases
-  serialize :accepts
-  serialize :goes_in
-  serialize :mount_points
+  serialize :aliases, JSON
+  serialize :accepts, JSON
+  serialize :goes_in, JSON
+  serialize :mount_points, JSON
 
   def for_player?(mountpoint)
     return false if goes_in.nil?
