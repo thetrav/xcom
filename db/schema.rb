@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120707232413) do
+ActiveRecord::Schema.define(:version => 20120711074910) do
 
   create_table "base_items", :force => true do |t|
     t.string  "name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120707232413) do
     t.integer "parent_item_id"
     t.integer "player_id"
     t.string  "mount_point"
+    t.boolean "trashed",        :default => false
   end
 
   create_table "loadouts", :force => true do |t|

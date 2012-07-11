@@ -28,6 +28,15 @@ Page.Views.Item = Page.Views.Base.extend {
         error:(e) => new Error("error removing object")
       )
     )
+    @field("trash-button").click((e) =>
+      @model.trash(
+        success:() =>
+          @el.fadeOut()
+          @updateWeight()
+          @updateSpace()
+        error:(e) => new Error("error trashing object")
+      )
+    )
 
   addItem: (child) ->
     child.view = new Page.Views.Item(parent:@field("items"), item:child)

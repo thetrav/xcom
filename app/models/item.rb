@@ -2,7 +2,9 @@ class Item < ActiveRecord::Base
   before_create :subtract_inventory
   before_destroy :return_to_inventory
 
-  attr_accessible :base_item_id, :parent_item_id, :player_id, :mount_point
+  scope(:not_trash, where(:trashed => false))
+
+  attr_accessible :base_item_id, :parent_item_id, :player_id, :mount_point, :trashed
 
   belongs_to :base_item
 

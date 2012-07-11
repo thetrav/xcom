@@ -51,7 +51,14 @@ Page.Models.Item = Page.Models.Base.extend(
   capacity: () ->
     @base("capacity")
 
-
+  trash: (callbacks) ->
+    @save({trashed: true},
+    success:(model) ->
+      Page.items.remove(model)
+      callbacks.success(model)
+    error:(e) ->
+      callbacks.error(e)
+    )
 )
 
 Page.Collections.Items = Backbone.Collection.extend(
