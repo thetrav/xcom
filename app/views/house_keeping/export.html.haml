@@ -6,6 +6,6 @@
     %th cs_type
     %th parent_item_name
   - @players.each do |player|
-    - player.items.each do |item|
+    - player.items.not_trash.each do |item|
       !=render :partial =>"items", :locals => {:player => player, :item => item}
 

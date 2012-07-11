@@ -49,3 +49,12 @@ a.button:hover {
     background-color: #FF8888;
   }
 }
+
+table {
+  width: 80%;
+
+  td, th {
+    border: 1px solid black;
+    text-align: center;
+  }
+}
