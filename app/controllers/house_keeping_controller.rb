@@ -31,12 +31,15 @@ class HouseKeepingController < ApplicationController
 
   def upload_base_items
     process_file do |row|
+      row = row.symbolize_keys
       row[:name] = row[:name].capitalize
       item = BaseItem.find_by_name(row[:name])
       item ||= BaseItem.new
       un_munge!(row, [:aliases, :accepts, :goes_in, :mount_points])
-      item.update_attributes!(pick(row, [ :name, :space, :weight, :capacity, :quantity,
-                                           :aliases, :accepts, :goes_in, :mount_points]))
+      attrs = pick(row, [ :name, :space, :weight, :capacity, :quantity,
+                          :aliases, :accepts, :goes_in, :mount_points, :cs_type])
+      ap attrs
+      item.update_attributes!(attrs)
     end
 
     render :text => "success!"
@@ -45,8 +48,12 @@ class HouseKeepingController < ApplicationController
   private
 
   def pick(hash, keys)
+    ap hash
+    ap keys
     hash.reject do |k,_|
-      keys.include? k
+      puts "key #{k} in keys: #{keys.include? k}"
+      #ap keys
+      keys.include?(k) == false
     end
   end
 
