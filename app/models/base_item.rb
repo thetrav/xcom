@@ -12,7 +12,7 @@ class BaseItem < ActiveRecord::Base
 
   def for_player?(mountpoint)
     return false if goes_in.nil?
-    goes_in.include?(mountpoint)
+    goes_in.include?("Player")
   end
 
   def for_item?(item)
