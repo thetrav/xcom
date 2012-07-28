@@ -4,7 +4,6 @@
     %tr
       %th name
       %th cs_type
-      %th qty
   - player.items.not_trash.each do |item|
     !=render :partial =>"items", :locals => {:player => player, :item => item}
 
