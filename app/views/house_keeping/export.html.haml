@@ -1,11 +1,10 @@
-%table
-  %tr
-    %th player
-    %th mountpoint
-    %th item
-    %th cs_type
-    %th parent_item_name
-  - @players.each do |player|
-    - player.items.not_trash.each do |item|
-      !=render :partial =>"items", :locals => {:player => player, :item => item}
+- @players.each do |player|
+  %h1= player.name
+  %table
+    %tr
+      %th name
+      %th cs_type
+      %th qty
+  - player.items.not_trash.each do |item|
+    !=render :partial =>"items", :locals => {:player => player, :item => item}
 
