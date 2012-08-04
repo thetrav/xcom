@@ -22,6 +22,7 @@ class Item < ActiveRecord::Base
   delegate :goes_in, :to => :base_item
   delegate :mount_points, :to => :base_item
   delegate :cs_type, :to => :base_item
+  delegate :cs_name, :to => :base_item
 
   def total_weight
     total = weight
