@@ -44,7 +44,7 @@ Page.Views.Player = Page.Views.Base.extend(
     @updateWeight()
 
   updateWeight:() ->
-    weight = @model.weight()
+    weight = @model.weight().toFixed(2)
     @update("weight", weight)
     tableRows = @el.find('.encumbrance tr')
     tableRows.removeClass('current')
