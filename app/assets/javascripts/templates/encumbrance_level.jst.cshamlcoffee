@@ -1,6 +1,6 @@
 %tr{"id":@view.fieldId("encumbrance-#{@level}")}
   %td.weight
   %td=(@model.get("basic_lift")*@limit)
-  %td=(@model.get("basic_move")*@move)/toFixed(2)
+  %td=(@model.get("basic_move")*@move).toFixed(2)
   %td=(@model.get("dodge")-@dodge)
   %td=@level
