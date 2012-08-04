@@ -3,7 +3,7 @@ class BaseItem < ActiveRecord::Base
   before_destroy :destroy_items
 
   attr_accessible :name, :space, :weight, :capacity, :quantity,
-                  :aliases, :accepts, :goes_in, :mount_points, :cs_type
+                  :aliases, :accepts, :goes_in, :mount_points, :cs_type, :cs_name
 
   serialize :aliases, JSON
   serialize :accepts, JSON

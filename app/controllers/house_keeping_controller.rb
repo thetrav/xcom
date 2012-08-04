@@ -37,7 +37,7 @@ class HouseKeepingController < ApplicationController
       item ||= BaseItem.new
       un_munge!(row, [:aliases, :accepts, :goes_in, :mount_points])
       attrs = pick(row, [ :name, :space, :weight, :capacity, :quantity,
-                          :aliases, :accepts, :goes_in, :mount_points, :cs_type])
+                          :aliases, :accepts, :goes_in, :mount_points, :cs_type, :cs_name])
       ap attrs
       item.update_attributes!(attrs)
     end

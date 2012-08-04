@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120711074910) do
+ActiveRecord::Schema.define(:version => 20120804061527) do
 
   create_table "base_items", :force => true do |t|
     t.string  "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120711074910) do
     t.text    "mount_points"
     t.integer "quantity"
     t.string  "cs_type"
+    t.string  "cs_name"
   end
 
   create_table "items", :force => true do |t|
