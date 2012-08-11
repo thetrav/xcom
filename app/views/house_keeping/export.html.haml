@@ -4,6 +4,7 @@
     %tr
       %th cs_name
       %th cs_type
+      %th weight
     - player.items.not_trash.each do |item|
       !=render :partial =>"items", :locals => {:player => player, :item => item}
 

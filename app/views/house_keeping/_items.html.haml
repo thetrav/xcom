@@ -1,5 +1,6 @@
 %tr
   %td=item.cs_name
   %td=item.cs_type
+  %td=item.weight
 -item.items.each do |child|
   !=render :partial =>"items", :locals => {:player => player, :item => child}
