@@ -1,7 +1,7 @@
 class ItemsController < Resty
 
   def index
-    render :json => Item.not_trash.all
+    render :json => Item.not_trash.all.sort_by { |it| it.name }
   end
 
   def trash
