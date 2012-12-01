@@ -1,7 +1,6 @@
 .item-container{"id":@view.elId()}
   %a{"href":"#", "data-toggle":"collapse", "data-target":"#{@view.field_id("collapse")}"} =@model.label()
   %a.button.remove{"href":"#", "id":@view.fieldId("remove-button")} -
-  %a.button.trash{"href":"#", "id":@view.fieldId("trash-button")} x
   .item.collapse{"id":@view.fieldId("collapse")}
       Weight:
       %span{"id":@view.fieldId("weight")} = @model.weight()
