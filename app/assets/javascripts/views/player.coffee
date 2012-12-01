@@ -34,7 +34,7 @@ Page.Views.Player = Page.Views.Base.extend(
   saveLoadout:(name) ->
     model = new Page.Models.Loadout(name: name, player_id: @model.id)
     model.save({},
-      success: (e) -> addLoadout(e)
+      success: (e) => @addLoadout(e)
       error: (e) -> new Error("error saving loadout")
     )
 
