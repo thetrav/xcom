@@ -4,7 +4,6 @@ window.Page =
   Collections: {},
   Dispatcher: _.clone(Backbone.Events)
   init: () ->
-    console.log("clearing dispatcher")
     Page.Dispatcher.off()
     Page.players = new Page.Collections.Players
     Page.players.fetch(
@@ -53,12 +52,10 @@ window.Page =
 
   listFilter:(input, list) ->
     input.change(() =>
-      console.log("input changed")
       filter = input.val().toLowerCase()
       list.find(".aliases:not(:contains('#{filter}'))").parent().slideUp()
       list.find(".aliases:contains('#{filter}')").parent().slideDown()
     )
     input.keyup(() ->
-      console.log("keyup")
       input.change()
     )

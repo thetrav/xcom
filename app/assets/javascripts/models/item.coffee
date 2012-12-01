@@ -3,7 +3,6 @@ Page.Models.Item = Page.Models.Base.extend(
     @name = 'item'
 
   addItem:(baseItem) ->
-    console.log("adding item #{baseItem.id}")
     item = new Page.Models.Item(
       base_item_id:baseItem.id,
       parent_item_id:@id

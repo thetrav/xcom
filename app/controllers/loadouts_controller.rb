@@ -12,7 +12,7 @@ class LoadoutsController < Resty
 
   def apply
     Loadout.find(params[:id]).apply
-    redirect_to :controller => :page, :action => :index
+    redirect_to "/"
   end
 
   private
