@@ -1,3 +1,3 @@
 %li
-  %a{'href':@view.el_id(), "data-toggle":"tab"}
+  %a{'href':@view.el_id(), "data-toggle":"tab", "data-id":@model.get("id")}
     = @model.get("name")

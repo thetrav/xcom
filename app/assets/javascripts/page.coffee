@@ -3,7 +3,7 @@ window.Page =
   Models: {},
   Collections: {},
   Dispatcher: _.clone(Backbone.Events)
-  init: () ->
+  init: (playerId) ->
     Page.Dispatcher.off()
     Page.players = new Page.Collections.Players
     Page.players.fetch(
@@ -15,7 +15,7 @@ window.Page =
             Page.items.fetch(
               success: () =>
                 @renderPlayers()
-                $('ul.nav-tabs a:first').tab('show');
+                $('ul.nav-tabs a[data-id='+playerId+']').tab('show');
                 @renderItems()
                 @loadLoadouts()
               error: () -> new Error(message:"error loading items.")
